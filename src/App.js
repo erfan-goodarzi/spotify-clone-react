@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles/>
+      <p>hi</p>
       <Routes>
         <Route path="/" element={<Auth/>} />
       </Routes>

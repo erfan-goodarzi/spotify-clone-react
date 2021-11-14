@@ -1,5 +1,6 @@
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import { accessUrl } from "../../container/config-spotify";
 
 const Auth = () => {
   return (
@@ -37,7 +38,7 @@ const Auth = () => {
             padding: "13px 61px",
             borderRadius: "99px",
           }}
-          href="#text-buttons"
+          href={accessUrl}
         >
           Login To Spotify
         </Button>
