@@ -11,8 +11,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
+import { BiHomeAlt, BiUserVoice, BiSearchAlt } from "react-icons/bi";
 
-const drawerWidth = 300;
+const drawerWidth = 273;
 
 const SideBar = () => {
   return (
@@ -31,18 +32,18 @@ const SideBar = () => {
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
             background: "#1E2338 !important",
-            border: 'none',
+            border: "none",
             width: drawerWidth,
             boxSizing: "border-box",
           },
         }}
       >
         <Box
-        sx={{
-            ml: 4
-        }}
+          sx={{
+            ml: 4,
+          }}
         >
-          <Toolbar sx={{ display: "flex", alignItems: "center" , mt: 3, mb: 3}}>
+          <Toolbar sx={{ display: "flex", alignItems: "center", mt: 3, mb: 3 }}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
               alt=""
@@ -69,29 +70,86 @@ const SideBar = () => {
                 <ListSubheader
                   component="div"
                   id="nested-list-subheader"
-                  sx={{ background: "transparent", color: "#F3F3F3" , letterSpacing: '2px', fontWeight: '600', fontSize: 17}}
+                  sx={{
+                    background: "transparent",
+                    color: "#F3F3F3",
+                    letterSpacing: "1px",
+                    fontWeight: "400",
+                    fontSize: 16,
+                  }}
                 >
-                 Browse Music
+                  BROWSE MUSIC
                 </ListSubheader>
               }
             >
-              {["Home", "Discover", "Songs", "Artists"].map(
-                (text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <Box sx={{color: '#fff'}}>icon</Box> : <Box sx={{color: '#fff'}}>icon</Box>}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                )
-              )}
+              {/* 
+
+infoRef.current <= 16
+              ? "severe thinness"
+              : infoRef.current >= 16 && infoRef.current <= 18.4
+              ? "thinness"
+              : infoRef.current >= 18.5 && infoRef.current <= 24.9
+              ? "normal weight"
+              : infoRef.current >= 25 && infoRef.current <= 29.9
+              ? "Overweight"
+              : infoRef.current >= 30 && infoRef.current <= 34.9
+              ? "Obese"
+              : infoRef.current >= 35
+              ? "very Obese"
+              : null */}
+
+              {["Home", "Discover", "Artists"].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon
+                    sx={{ minWidth: 37, fontSize: "18px", color: "#ababab" }}
+                  >
+                    {index % 4 === 0 ? (
+                      <BiHomeAlt />
+                    ) : index % 4 === 1 ? (
+                      <BiSearchAlt />
+                    ) : index % 4 === 2 ? (
+                      <BiUserVoice />
+                    ) : null}
+                  </ListItemIcon>
+                  <ListItemText
+                    sx={{
+                      color: '#ababab',
+                      [`& span`]: {
+                        fontSize: 15,
+                        fontWeight: '300'
+                      }
+                    }}
+                    primary={text}
+                  />
+                </ListItem>
+              ))}
             </List>
             <Divider />
-            <List>
+            <List
+             subheader={
+              <ListSubheader
+                component="div"
+                id="nested-list-subheader1"
+                sx={{
+                  background: "transparent",
+                  color: "#F3F3F3",
+                  letterSpacing: "1px",
+                  fontWeight: "400",
+                  fontSize: 16,
+                }}
+              >
+                YOUR MUSIC
+              </ListSubheader>
+            }
+            >
               {["Products", "History", "Playlist"].map((text, index) => (
                 <ListItem button key={text}>
                   <ListItemIcon>
-                    {index % 2 === 0 ? <Box sx={{color: '#fff'}}>icon</Box> : <Box sx={{color: '#fff'}}>icon</Box>}
+                    {index % 2 === 0 ? (
+                      <Box sx={{ color: "#fff" }}>icon</Box>
+                    ) : (
+                      <Box sx={{ color: "#fff" }}>icon</Box>
+                    )}
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItem>

@@ -19,7 +19,7 @@ const scopes = [
 export const getTokenFromResponse = () => {
   return window.location.hash
     .substring(1)
-    .split("&")
+    .split("&")   
     .reduce((acc, cur) => {
       const [key, value] = cur.split("=");
       acc[key] = decodeURIComponent(value);
