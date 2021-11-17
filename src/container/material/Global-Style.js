@@ -4,22 +4,22 @@ const useStyles = makeStyles(() =>
   createStyles({
     "@global": {
       body: {
-        background: "#FFEBC2",
+        backgroundImage: "linear-gradient(183deg, #303347, #4C4853, #303347)",
+        height: "100vh",
       },
       "*": {
         fontFamily: "Nunito !important",
         margin: 0,
         padding: 0,
       },
-      ".MuiBadge-badge":{
-        width: '20px',
-        height: '20px',
-        borderRadius:' 50%',
-        margin: '10px 19px',
-        backgroundColor: '#FDC10C !important',
-        fontSize:' 6px',
-      }
-      
+      ".MuiBadge-badge": {
+        width: "20px",
+        height: "20px",
+        borderRadius: " 50%",
+        margin: "10px 19px",
+        backgroundColor: "#FDC10C !important",
+        fontSize: " 6px",
+      },
     },
   })
 );

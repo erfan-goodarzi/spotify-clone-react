@@ -6,12 +6,18 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
-import { BiHomeAlt, BiUserVoice, BiSearchAlt } from "react-icons/bi";
+import {
+  BiHomeAlt,
+  BiUserVoice,
+  BiSearchAlt,
+  BiPodcast,
+  BiHeart,
+  BiMusic,
+} from "react-icons/bi";
 
 const drawerWidth = 273;
 
@@ -21,7 +27,7 @@ const SideBar = () => {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer - 1 }}
+        sx={{ zIndex: (theme) => theme.zIndex.drawer - 1, background: 'transparent', boxShadow: 'none' }}
       >
         <Toolbar></Toolbar>
       </AppBar>
@@ -31,7 +37,7 @@ const SideBar = () => {
           width: drawerWidth,
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
-            background: "#1E2338 !important",
+            background: "#1B1A20 !important",
             border: "none",
             width: drawerWidth,
             boxSizing: "border-box",
@@ -43,7 +49,7 @@ const SideBar = () => {
             ml: 4,
           }}
         >
-          <Toolbar sx={{ display: "flex", alignItems: "center", mt: 3, mb: 3 }}>
+          <Toolbar sx={{ display: "flex", alignItems: "center", mt: 3, mb: 2 }}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
               alt=""
@@ -82,22 +88,6 @@ const SideBar = () => {
                 </ListSubheader>
               }
             >
-              {/* 
-
-infoRef.current <= 16
-              ? "severe thinness"
-              : infoRef.current >= 16 && infoRef.current <= 18.4
-              ? "thinness"
-              : infoRef.current >= 18.5 && infoRef.current <= 24.9
-              ? "normal weight"
-              : infoRef.current >= 25 && infoRef.current <= 29.9
-              ? "Overweight"
-              : infoRef.current >= 30 && infoRef.current <= 34.9
-              ? "Obese"
-              : infoRef.current >= 35
-              ? "very Obese"
-              : null */}
-
               {["Home", "Discover", "Artists"].map((text, index) => (
                 <ListItem button key={text}>
                   <ListItemIcon
@@ -113,45 +103,80 @@ infoRef.current <= 16
                   </ListItemIcon>
                   <ListItemText
                     sx={{
-                      color: '#ababab',
+                      color: "#ababab",
                       [`& span`]: {
                         fontSize: 15,
-                        fontWeight: '300'
-                      }
+                        fontWeight: "300",
+                      },
                     }}
                     primary={text}
                   />
                 </ListItem>
               ))}
             </List>
-            <Divider />
             <List
-             subheader={
-              <ListSubheader
-                component="div"
-                id="nested-list-subheader1"
-                sx={{
-                  background: "transparent",
-                  color: "#F3F3F3",
-                  letterSpacing: "1px",
-                  fontWeight: "400",
-                  fontSize: 16,
-                }}
-              >
-                YOUR MUSIC
-              </ListSubheader>
-            }
+              subheader={
+                <ListSubheader
+                  component="div"
+                  id="nested-list-subheader1"
+                  sx={{
+                    background: "transparent",
+                    color: "#F3F3F3",
+                    letterSpacing: "1px",
+                    fontWeight: "400",
+                    fontSize: 16,
+                  }}
+                >
+                  YOUR MUSIC
+                </ListSubheader>
+              }
             >
-              {["Products", "History", "Playlist"].map((text, index) => (
+              {["Podcasts", "Favourites", "Playlist"].map((text, index) => (
                 <ListItem button key={text}>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? (
-                      <Box sx={{ color: "#fff" }}>icon</Box>
-                    ) : (
-                      <Box sx={{ color: "#fff" }}>icon</Box>
-                    )}
+                  <ListItemIcon
+                    sx={{ minWidth: 37, fontSize: "18px", color: "#ababab" }}
+                  >
+                    {index % 4 === 0 ? (
+                      <BiPodcast />
+                    ) : index % 4 === 1 ? (
+                      <BiHeart />
+                    ) : index % 4 === 2 ? (
+                      <BiMusic />
+                    ) : null}
                   </ListItemIcon>
                   <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+            <List
+              subheader={
+                <ListSubheader
+                  component="div"
+                  id="nested-list-subheader"
+                  sx={{
+                    background: "transparent",
+                    color: "#F3F3F3",
+                    letterSpacing: "1px",
+                    fontWeight: "400",
+                    fontSize: 16,
+                  }}
+                >
+                  YOUR PLAYLIST
+                </ListSubheader>
+              }
+            >
+              {["Playlist #1", "Playlist #2", "Playlist #3"].map((text, index) => (
+                <ListItem dense button key={text}>
+                  <ListItemText
+                    sx={{
+                      color: "#ababab",
+                      [`& span`]: {
+                        fontSize: 14,
+                        fontWeight: "700",
+                      },
+                    }}
+                    primary={text}
+                  />
                 </ListItem>
               ))}
             </List>
@@ -160,7 +185,7 @@ infoRef.current <= 16
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        <Typography paragraph>
+        {/* <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
           dolor purus non enim praesent elementum facilisis leo vel. Risus at
@@ -188,7 +213,7 @@ infoRef.current <= 16
           sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        </Typography> */}
       </Box>
     </Box>
   );
