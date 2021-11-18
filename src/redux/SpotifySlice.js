@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export const SpotifySlice = createSlice({
-  name: "Spotify",
+  name: "spotify",
   initialState,
   reducers: {
     GetUserInfo: (state, action) => {

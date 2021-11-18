@@ -3,6 +3,6 @@ import SpotifySlice from '../redux/SpotifySlice';
 
 export const store = configureStore({
   reducer: {
-    Spotify: SpotifySlice,
+    spotify: SpotifySlice,
   },
 });
