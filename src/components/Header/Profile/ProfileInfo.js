@@ -1,22 +1,15 @@
-import { useState } from "react";
+// import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
-import { getTokenFromResponse } from "../../../container/config-spotify";
-import useAxios from "../../../hooks/useAxios";
-import { GetUserInfo } from "../../../redux/SpotifySlice";
+// import { getTokenFromResponse } from "../../../container/config-spotify";
+// import { GetUserInfo } from "../../../redux/SpotifySlice";
+
 
 const ProfileInfo = () => {
-  const { response } = useAxios({
-    method: "get",
-    url: "https://api.spotify.com/v1/me",
-    headers:  {
-      Authorization: "Bearer " + getTokenFromResponse().access_token,
-    },
-  });
+  const user = useSelector((state) => state.spotify.userInfo);
 
-  console.log(response);
   return (
     <>
       <Stack
@@ -34,7 +27,9 @@ const ProfileInfo = () => {
             color: "#fff",
             letterSpacing: "1px",
           }}
-        ></Typography>
+        >
+          {user}
+        </Typography>
       </Stack>
     </>
   );

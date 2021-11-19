@@ -1,4 +1,3 @@
-import React from "react";
 import SideBar from "./menu/SideBar";
 import SearchBox from "./Search/SearchBox";
 import Box from "@mui/material/Box";
