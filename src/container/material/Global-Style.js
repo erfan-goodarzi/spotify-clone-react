@@ -13,12 +13,10 @@ const useStyles = makeStyles(() =>
         padding: 0,
       },
       ".MuiBadge-badge": {
-        width: "20px",
-        height: "20px",
+        width: "5px",
         borderRadius: " 50%",
-        margin: "10px 19px",
-        backgroundColor: "#FDC10C !important",
-        fontSize: " 6px",
+        margin: "2px 4px",
+        backgroundColor: "#18d45e !important",
       },
     },
   })

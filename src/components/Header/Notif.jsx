@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { Divider } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
+import Badge from "@mui/material/Badge";
 
 const Notification = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,7 +26,7 @@ const Notification = () => {
 
   const AlertHandlerClose = () => {
     setTimeout(() => {
-        setAlert(false);
+      setAlert(false);
     }, 2000);
   };
 
@@ -39,7 +40,7 @@ const Notification = () => {
         sx={{
           "& > :not(style)": {
             m: 1,
-            color: "#ababab",
+            color: "#ababab !important",
             fontSize: 22,
           },
         }}
@@ -48,8 +49,11 @@ const Notification = () => {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-          <BiMessageSquareDetail />
+          <Badge color="secondary" variant="dot">
+            <BiMessageSquareDetail />
+          </Badge>
         </IconButton>
+
         <IconButton onClick={AlertHandler}>
           <BiBell />
         </IconButton>
