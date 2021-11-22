@@ -14,14 +14,16 @@ const ProfileInfo = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     spotifyApi.setAccessToken(getTokenFromResponse().access_token);
-    spotifyApi.getMe().then((res) =>
+    spotifyApi.getMe().then((res) => {
+      console.log(res)
       dispatch(
         GetUserInfo({
           name: res.display_name,
           img: res.images.length === 0 ? null : res.images[0].url,
+          title: res.type
         })
-      )
-    );
+      );
+    });
   }, [dispatch]);
   return (
     <>

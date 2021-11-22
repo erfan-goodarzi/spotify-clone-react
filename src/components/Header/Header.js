@@ -12,7 +12,7 @@ const Header = () => {
         <Grid item xs={2} sx={{ ml: 4 }}>
           <SideBar />
         </Grid>
-        <Grid item xs={8} container>
+        <Grid item xs={8} container direction="column">
           <Grid
             item
             xs
@@ -32,10 +32,22 @@ const Header = () => {
             <Grid item xs={1}>
               <ProfileInfo />
             </Grid>
-
-            <Routes>
-              <Route path="/profile" element={<Profile />} />
-            </Routes>
+          </Grid>
+          <Grid
+            item
+            xs
+            container
+            direction="row"
+            alignItems="center"
+            sx={{
+              mt: 3,
+            }}
+          >
+            <Grid item sx={{width: '100%'}}>
+              <Routes>
+                <Route path="/profile" element={<Profile />} />
+              </Routes>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
