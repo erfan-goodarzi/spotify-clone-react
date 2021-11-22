@@ -1,7 +1,5 @@
 import SideBar from "./menu/SideBar";
 import SearchBox from "./Search/SearchBox";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Notification from "./Notif";
 import ProfileInfo from "./Profile/ProfileInfo";

@@ -4,6 +4,8 @@ const initialState = {
   userInfo: {
     name: null,
     img: null,
+    title: null,
+    followers: null
   },
   token: null,
 };
