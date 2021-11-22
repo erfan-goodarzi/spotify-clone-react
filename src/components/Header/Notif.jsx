@@ -31,11 +31,7 @@ const Notification = () => {
   };
 
   return (
-    <Box
-      sx={{
-        mt: 3,
-      }}
-    >
+    <Box>
       <Box
         sx={{
           "& > :not(style)": {

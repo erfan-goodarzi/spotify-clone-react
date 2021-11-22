@@ -11,12 +11,11 @@ const SearchBox = () => {
       sx={{
         p: "2px 4px",
         bgcolor: "#1B1A20",
-        mt: 2,
-        ml: 32,
+        ml: 4,
         mr: 0,
         display: "flex",
         alignItems: "center",
-        width: "40%",
+        width: "80%",
         height: 55,
         borderRadius: "6px",
       }}

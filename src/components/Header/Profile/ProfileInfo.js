@@ -30,7 +30,7 @@ const ProfileInfo = () => {
       <Stack
         direction="row"
         spacing={2}
-        sx={{ mt: 3, mr: "-20rem" }}
+        sx={{ ml: "3rem" }}
         justifyContent="center"
         alignItems="center"
       >
