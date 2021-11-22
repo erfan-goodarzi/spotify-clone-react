@@ -5,10 +5,10 @@ import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { getTokenFromResponse } from "../../../container/config-spotify";
 import { GetUserInfo } from "../../../redux/SpotifySlice";
-import useAxios from "axios-hooks";
 import axios from "axios";
 const ProfileInfo = () => {
-  const user = useSelector((state) => state.spotify.userInfo);
+  const UserName = useSelector((state) => state.spotify.userInfo.name);
+  const Userimg = useSelector((state) => state.spotify.userInfo.img);
   const dispatch = useDispatch();
   useEffect(() => {
     axios({
@@ -16,9 +16,15 @@ const ProfileInfo = () => {
       headers: {
         Authorization: "Bearer " + getTokenFromResponse().access_token,
       },
-    }).then((res) => dispatch(GetUserInfo(res.data.id)));
+    }).then((res) => {
+      dispatch(
+        GetUserInfo({
+          name: res.data.display_name,
+          img: res.data.images.length === 0 ? null : res.data.images[0].url,
+        })
+      );
+    });
   }, [dispatch]);
-
   return (
     <>
       <Stack
@@ -28,7 +34,7 @@ const ProfileInfo = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Avatar alt="Erfan" src="/static/images/avatar/1.jpg" />
+        <Avatar alt={UserName} src={Userimg} />
         <Typography
           sx={{
             fontSize: 18,
@@ -37,7 +43,7 @@ const ProfileInfo = () => {
             letterSpacing: "1px",
           }}
         >
-          {user}
+          {UserName}
         </Typography>
       </Stack>
     </>
