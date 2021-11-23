@@ -1,11 +1,13 @@
 import { createStyles, makeStyles } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(() =>
   createStyles({
     "@global": {
       body: {
-        backgroundImage: "linear-gradient(183deg, #303347, #4C4853, #303347)",
-        height: "100vh",
+        backgroundImage: (props) =>
+          `linear-gradient(183deg, #303347 , ${props.color}, #303347)`,
+        height: (props) => props.height,
       },
       "*": {
         fontFamily: "Nunito !important",
@@ -23,7 +25,12 @@ const useStyles = makeStyles(() =>
 );
 
 const GlobalStyles = () => {
-  useStyles();
+  const maincolor = useSelector((state) => state.spotify.setColor);
+  const props = {
+    height: "100vh",
+    color: maincolor || "#4C4853",
+  };
+  useStyles(props);
 
   return null;
 };

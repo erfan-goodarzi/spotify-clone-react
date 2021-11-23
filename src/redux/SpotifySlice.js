@@ -8,6 +8,7 @@ const initialState = {
     followers: null
   },
   token: null,
+  setColor: null,
 };
 
 export const SpotifySlice = createSlice({
@@ -17,9 +18,12 @@ export const SpotifySlice = createSlice({
     GetUserInfo: (state, action) => {
       state.userInfo = action.payload;
     },
+    SetBgcolor: (state, action) => {
+      state.setColor = action.payload;
+    },
   },
 });
 
-export const { GetUserInfo } = SpotifySlice.actions;
+export const { GetUserInfo,SetBgcolor } = SpotifySlice.actions;
 
 export default SpotifySlice.reducer;
