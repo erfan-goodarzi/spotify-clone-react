@@ -15,12 +15,13 @@ const ProfileInfo = () => {
   useEffect(() => {
     spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     spotifyApi.getMe().then((res) => {
-      console.log(res)
+      console.log(res);
       dispatch(
         GetUserInfo({
           name: res.display_name,
           img: res.images.length === 0 ? null : res.images[0].url,
-          title: res.type
+          title: res.type,
+          followers: res.followers.total
         })
       );
     });
@@ -37,8 +38,8 @@ const ProfileInfo = () => {
         <Avatar alt={UserName} src={Userimg} />
         <Typography
           sx={{
-            fontSize: 18,
-            fontWeight: "400",
+            fontSize: 15,
+            fontWeight: "200",
             color: "#fff",
             letterSpacing: "1px",
           }}
