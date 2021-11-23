@@ -20,6 +20,9 @@ const useStyles = makeStyles(() =>
         margin: "2px 4px",
         backgroundColor: "#18d45e !important",
       },
+      ".MuiDataGrid-root": {
+        border: "none !important",
+      },
     },
   })
 );

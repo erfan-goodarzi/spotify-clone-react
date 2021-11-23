@@ -5,6 +5,7 @@ import Notification from "./Notif";
 import ProfileInfo from "./Profile/ProfileInfo";
 import Profile from "./Profile/Profile";
 import { Route, Routes } from "react-router";
+import { Box } from "@mui/system";
 const Header = () => {
   return (
     <>
@@ -43,10 +44,18 @@ const Header = () => {
               mt: 3,
             }}
           >
-            <Grid item sx={{width: '100%'}}>
-              <Routes>
-                <Route path="/profile" element={<Profile />} />
-              </Routes>
+            <Grid item sx={{ width: "100%" }}>
+              <Box
+                sx={{
+                  width: "121%",
+                  overflowY: "scroll",
+                  overflowX: "clip",
+                }}
+              >
+                <Routes>
+                  <Route path="/profile" element={<Profile />} />
+                </Routes>
+              </Box>
             </Grid>
           </Grid>
         </Grid>
