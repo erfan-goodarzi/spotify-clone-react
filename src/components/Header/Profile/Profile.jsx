@@ -2,6 +2,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import { useSelector } from "react-redux";
 import Toptrack from "../../main/TopTrack";
+import SearchBox from "../Search/SearchBox";
 import UserHeaderInfo from "./UserHeaderInfo";
 
 const Profile = () => {
@@ -24,7 +25,9 @@ const Profile = () => {
           Image={UserImg}
           Follower={Userfollowers}
         />
-        <Toptrack Title="Top Tracks" />
+         <Box sx={{mb: 9}}>
+          <Toptrack Title="Top Tracks" />
+        </Box>
       </Box>
     </>
   );

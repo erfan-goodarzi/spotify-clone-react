@@ -11,7 +11,7 @@ const columns = [
   {
     field: "img",
     headerName: "Cover",
-    width: 70,
+    width: 80,
     sortable: false,
     align: "center",
     headerAlign: "center",
@@ -32,26 +32,22 @@ const columns = [
     sortable: false,
     headerAlign: "center",
   },
-  // {
-  //   field: "time",
-  //   headerName: "Time",
-  //   width: 105,
-  //   sortable: false,
-  //   align: "center",
-  //   headerAlign: "center",
-  // },
-  // {
-  //   field: "Options",
-  //   headerName: "Options",
-  //   sortable: false,
-  //   align: "center",
-  //   headerAlign: "center",
-  //   width: 130,
-  //   valueGetter: (params) =>
-  //     `${params.getValue(params.id, "songs") || ""} ${
-  //       params.getValue(params.id, "album") || ""
-  //     }`,
-  // },
+  {
+    field: "time",
+    headerName: "Time",
+    width: 105,
+    sortable: false,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "artist",
+    headerName: "Artist",
+    sortable: false,
+    align: "center",
+    headerAlign: "center",
+    width: 190,
+  },
 ];
 
 // const rows = [
@@ -128,21 +124,27 @@ const Toptrack = ({ Title }) => {
     spotifyApi.getMyTopTracks({ limit: 6 }).then((res) => {
       console.log(res.items);
       const Fill = res.items.map((item) => {
+        let minutes = Math.floor(item.duration_ms / 60000);
+        let seconds = ((item.duration_ms % 60000) / 1000).toFixed(0);
+        let songTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
         return {
           img: item.album.images[2].url,
           songs: item.name,
           album: item.album.name,
+          time: songTime,
           id: item.id,
+          artist: item.artists[0].name
         };
       });
       console.log(Fill);
       dispatch(getUserTopTrack(Fill));
     });
   }, [dispatch]);
+
   return (
     <>
       <Divider sx={{ mt: 4, ml: 22 }} />
-      <Box sx={{ width: "64%", mx: "auto", mt: 6, pb: 4 }}>
+      <Box sx={{ width: "94%", mx: "auto", mt: 6 }}>
         <Typography
           sx={{
             mb: 3,
