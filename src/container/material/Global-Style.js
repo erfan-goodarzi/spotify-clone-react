@@ -8,6 +8,8 @@ const useStyles = makeStyles(() =>
         backgroundImage: (props) =>
           `linear-gradient(183deg, #303347 , ${props.color}, #303347)`,
         height: (props) => props.height,
+        overflow: "hidden",
+        overscrollBehaviorY: "none",
       },
       "*": {
         fontFamily: "Nunito !important",
@@ -23,6 +25,12 @@ const useStyles = makeStyles(() =>
       ".MuiDataGrid-root": {
         border: "none !important",
       },
+      ".MuiDataGrid-cell": {
+        borderBottom: "none !important",
+      },
+      // ".MuiDataGrid-row": {
+      //   margin: "14px 0px",
+      // },
     },
   })
 );

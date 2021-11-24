@@ -5,10 +5,11 @@ const initialState = {
     name: null,
     img: null,
     title: null,
-    followers: null
+    followers: null,
   },
   token: null,
   setColor: null,
+  getUserTopTrack: [],
 };
 
 export const SpotifySlice = createSlice({
@@ -21,9 +22,13 @@ export const SpotifySlice = createSlice({
     SetBgcolor: (state, action) => {
       state.setColor = action.payload;
     },
+    getUserTopTrack: (state, action) => {
+      state.getUserTopTrack = action.payload;
+    },
   },
 });
 
-export const { GetUserInfo,SetBgcolor } = SpotifySlice.actions;
+export const { GetUserInfo, SetBgcolor, getUserTopTrack } =
+  SpotifySlice.actions;
 
 export default SpotifySlice.reducer;

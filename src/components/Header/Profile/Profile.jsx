@@ -24,7 +24,7 @@ const Profile = () => {
           Image={UserImg}
           Follower={Userfollowers}
         />
-        <Toptrack />
+        <Toptrack Title="Top Tracks" />
       </Box>
     </>
   );
