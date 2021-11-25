@@ -18,7 +18,7 @@ function App() {
             <SideBar />
           </Grid>
           <Grid item xs={8} container direction="column">
-            <Header/>
+            <Header />
             <Grid
               item
               xs
@@ -35,6 +35,7 @@ function App() {
                     width: "121%",
                     overflowY: "scroll",
                     overflowX: "clip",
+                    height: "79vh", 
                   }}
                 >
                   <Routes>

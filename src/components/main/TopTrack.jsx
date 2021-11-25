@@ -121,7 +121,7 @@ const Toptrack = ({ Title }) => {
   const topTrack = useSelector((state) => state.spotify.getUserTopTrack);
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
-    spotifyApi.getMyTopTracks({ limit: 6 }).then((res) => {
+    spotifyApi.getMyTopTracks({ limit: 20 }).then((res) => {
       console.log(res.items);
       const Fill = res.items.map((item) => {
         let minutes = Math.floor(item.duration_ms / 60000);
@@ -162,10 +162,10 @@ const Toptrack = ({ Title }) => {
           ColumnUnsortedIcon={false}
           columns={columns}
           showColumnRightBorder={false}
-          hideFooterPagination
-          pageSize={8}
-          rowsPerPageOptions={[8]}
+          pageSize={5}
+          rowsPerPageOptions={[4]}
           disableColumnMenu
+            
         />
       </Box>
     </>

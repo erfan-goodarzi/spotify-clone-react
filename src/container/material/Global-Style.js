@@ -27,8 +27,8 @@ const useStyles = makeStyles(() =>
       },
       ".MuiDataGrid-cell": {
         borderBottom: "none !important",
-        color: '#fff !important',
-        fontWeight: 100
+        color: "#fff !important",
+        fontWeight: 100,
       },
       ".MuiDataGrid-row": {
         margin: "14px 0px",
@@ -36,14 +36,18 @@ const useStyles = makeStyles(() =>
       ".MuiDataGrid-virtualScroller": {
         paddingBottom: "8rem",
       },
-      ".MuiDataGrid-virtualScrollerContent":{
-        height: '55vh !important'
+      ".MuiDataGrid-virtualScrollerContent": {
+        height: "55vh !important",
       },
-      ".MuiDataGrid-columnHeaderTitle":{
-        fontSize: '15px',
-        fontWeight: '600 !important',
-        color: '#ababab'
+      ".MuiDataGrid-columnHeaderTitle": {
+        fontSize: "15px",
+        fontWeight: "600 !important",
+        color: "#ababab",
       },
+      ".MuiTablePagination-root":
+        {
+          marginTop: "26rem !important",
+        },
     },
   })
 );

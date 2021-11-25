@@ -3,9 +3,7 @@ import SearchBox from "./Search/SearchBox";
 import Grid from "@mui/material/Grid";
 import Notification from "./Notif";
 import ProfileInfo from "./Profile/ProfileInfo";
-// import Profile from "./Profile/Profile";
-// import { Route, Routes } from "react-router";
-// import { Box } from "@mui/system";
+
 const Header = () => {
   return (
     <>
