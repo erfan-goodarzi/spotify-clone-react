@@ -7,6 +7,7 @@ import SideBar from "./components/Header/menu/SideBar";
 import Profile from "./components/Header/Profile/Profile";
 import { Box } from "@mui/system";
 import Header from "./components/Header/Header";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
                     width: "121%",
                     overflowY: "scroll",
                     overflowX: "clip",
-                    height: "79vh", 
+                    height: "79vh",
                   }}
                 >
                   <Routes>
@@ -44,6 +45,7 @@ function App() {
                 </Box>
               </Grid>
             </Grid>
+            <Footer />
           </Grid>
         </Grid>
       ) : (
