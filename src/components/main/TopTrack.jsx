@@ -48,6 +48,14 @@ const columns = [
     headerAlign: "center",
     width: 190,
   },
+  // {
+  //   field: "play",
+  //   headerName: "Play",
+  //   sortable: false,
+  //   align: "center",
+  //   headerAlign: "center",
+  //   width: 90,
+  // },
 ];
 
 // const rows = [
@@ -133,7 +141,8 @@ const Toptrack = ({ Title }) => {
           album: item.album.name,
           time: songTime,
           id: item.id,
-          artist: item.artists[0].name
+          artist: item.artists[0].name,
+         
         };
       });
       console.log(Fill);
@@ -144,7 +153,7 @@ const Toptrack = ({ Title }) => {
   return (
     <>
       <Divider sx={{ mt: 4, ml: 22 }} />
-      <Box sx={{ width: "94%", mx: "auto", mt: 6 }}>
+      <Box sx={{ width: "100%", mx: "auto", mt: 6 }}>
         <Typography
           sx={{
             mb: 3,
@@ -165,7 +174,6 @@ const Toptrack = ({ Title }) => {
           pageSize={5}
           rowsPerPageOptions={[4]}
           disableColumnMenu
-            
         />
       </Box>
     </>
