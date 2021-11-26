@@ -1,7 +1,7 @@
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
 import Box from "@mui/material/Box";
-
+import { useSelector } from "react-redux";
 
 const audioList1 = [
   {
@@ -23,9 +23,7 @@ const audioList1 = [
 ];
 
 const options = {
-  audioLists: audioList1,
-
-  defaultPlayIndex: 0,
+  defaultPlayIndex: 1,
 
   theme: "dark",
 
@@ -33,11 +31,11 @@ const options = {
 
   quietUpdate: false,
 
-  clearPriorAudioLists: false,
+  clearPriorAudioLists: true,
 
   autoPlayInitLoadPlayList: false,
 
-  preload: false,
+  preload: true,
 
   glassBg: false,
 
@@ -56,7 +54,7 @@ const options = {
 
   once: false,
 
-  autoPlay: false,
+  autoPlay: true,
 
   toggleMode: true,
 
@@ -133,10 +131,12 @@ const options = {
 };
 
 const Footerplayer = () => {
+  const song = useSelector((state) => state.spotify.playSong);
+
   return (
     <>
       <Box>
-        <ReactJkMusicPlayer {...options} />
+        <ReactJkMusicPlayer {...options} audioLists={song} />
       </Box>
     </>
   );

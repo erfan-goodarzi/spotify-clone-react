@@ -4,12 +4,12 @@ import { Divider, Typography } from "@mui/material";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getUserTopTrack } from "../../redux/SpotifySlice";
+import { getUserTopTrack, playSong } from "../../redux/SpotifySlice";
 import { useSelector } from "react-redux";
 
 const columns = [
   {
-    field: "img",
+    field: "cover",
     headerName: "Cover",
     width: 80,
     sortable: false,
@@ -19,7 +19,7 @@ const columns = [
   },
 
   {
-    field: "songs",
+    field: "name",
     headerName: "Song",
     width: 250,
     sortable: false,
@@ -41,7 +41,7 @@ const columns = [
     headerAlign: "center",
   },
   {
-    field: "artist",
+    field: "singer",
     headerName: "Artist",
     sortable: false,
     align: "center",
@@ -130,22 +130,20 @@ const Toptrack = ({ Title }) => {
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
     spotifyApi.getMyTopTracks({ limit: 20 }).then((res) => {
-      console.log(res.items);
       const Fill = res.items.map((item) => {
         let minutes = Math.floor(item.duration_ms / 60000);
         let seconds = ((item.duration_ms % 60000) / 1000).toFixed(0);
         let songTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
         return {
-          img: item.album.images[2].url,
-          songs: item.name,
+          cover: item.album.images[2].url,
+          name: item.name,
           album: item.album.name,
           time: songTime,
           id: item.id,
-          artist: item.artists[0].name,
-         
+          singer: item.artists[0].name,
+          musicSrc: item.preview_url,
         };
       });
-      console.log(Fill);
       dispatch(getUserTopTrack(Fill));
     });
   }, [dispatch]);
@@ -165,6 +163,9 @@ const Toptrack = ({ Title }) => {
           {Title}
         </Typography>
         <DataGrid
+          onRowClick={(e) => {
+            dispatch(playSong(e.row));
+          }}
           disableColumnSelector
           disableSelectionOnClick
           rows={topTrack}

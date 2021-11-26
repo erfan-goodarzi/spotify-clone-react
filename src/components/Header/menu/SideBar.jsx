@@ -33,7 +33,7 @@ const SideBar = () => {
               background: "#1B1A20 !important",
               border: "none",
               width: drawerWidth,
-              zIndex: '-1',
+              zIndex: '0',
               boxSizing: "border-box",
             },
           }}
