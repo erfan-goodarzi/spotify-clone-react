@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUserTopTrack, playSong } from "../../redux/SpotifySlice";
 import { useSelector } from "react-redux";
+import Playbutton from "../PlayerButton/PlayButton";
 
 const columns = [
   {
@@ -48,14 +49,15 @@ const columns = [
     headerAlign: "center",
     width: 190,
   },
-  // {
-  //   field: "play",
-  //   headerName: "Play",
-  //   sortable: false,
-  //   align: "center",
-  //   headerAlign: "center",
-  //   width: 90,
-  // },
+  {
+    field: "play",
+    headerName: "",
+    sortable: false,
+    align: "center",
+    headerAlign: "center",
+    width: 80,
+    renderCell: () => <Playbutton />,
+  },
 ];
 
 // const rows = [
@@ -151,7 +153,7 @@ const Toptrack = ({ Title }) => {
   return (
     <>
       <Divider sx={{ mt: 4, ml: 22 }} />
-      <Box sx={{ width: "100%", mx: "auto", mt: 6 }}>
+      <Box sx={{ width: "100%", mx: "auto", mt: 6, ml: 5 }}>
         <Typography
           sx={{
             mb: 3,

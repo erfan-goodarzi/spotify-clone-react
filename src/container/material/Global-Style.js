@@ -29,6 +29,12 @@ const useStyles = makeStyles(() =>
         borderBottom: "none !important",
         color: "#fff !important",
         fontWeight: 100,
+        "&&:focus": {
+          outline: "none !important",
+        },
+        "&&:focus-within": {
+          outline: "none !important",
+        },
       },
       ".MuiDataGrid-row": {
         margin: "14px 0px",
@@ -44,10 +50,9 @@ const useStyles = makeStyles(() =>
         fontWeight: "600 !important",
         color: "#ababab",
       },
-      ".MuiTablePagination-root":
-        {
-          marginTop: "26rem !important",
-        },
+      ".MuiTablePagination-root": {
+        marginTop: "26rem !important",
+      },
     },
   })
 );
