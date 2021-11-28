@@ -153,7 +153,14 @@ const Toptrack = ({ Title }) => {
   return (
     <>
       <Divider sx={{ mt: 4, ml: 22 }} />
-      <Box sx={{ width: "100%", mx: "auto", mt: 6, ml: 5 }}>
+      <Box
+        sx={{
+          width: { lg: "100%", md: "97%", sm: "97%" },
+          mx: "auto",
+          mt: 6,
+          ml: { lg: 5, md: "104px", sm: "72px" },
+        }}
+      >
         <Typography
           sx={{
             mb: 3,

@@ -1,4 +1,3 @@
-import IconButton from "@material-ui/core/IconButton";
 import { Button } from "@mui/material";
 import { BiRightArrow } from "react-icons/bi";
 

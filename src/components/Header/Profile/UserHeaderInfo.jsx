@@ -32,11 +32,11 @@ const UserHeaderInfo = ({ Title, UserName, Image, Follower }) => {
           ml: 4,
         }}
       >
-        <Grid item xs={9} sx={{ textAlign: "center", ml: 3 }}>
+        <Grid item xs={9} sm={12} sx={{ textAlign: "center", ml: {lg: 3, md: 21,sm: 11 }}}>
           <img
             style={{
               boxShadow: `${color} 2px 6px 20px 0px`,
-              width: "40%",
+              width: {lg: "40%", sm: '60%'},
               borderRadius: "3px",
             }}
             src={Image}
@@ -45,7 +45,7 @@ const UserHeaderInfo = ({ Title, UserName, Image, Follower }) => {
           <Typography
             sx={{
               mt: 2,
-              fontSize: 50,
+              fontSize:{lg: 50, sm: 32},
               fontWeight: "600",
               color: "#fff",
             }}
@@ -63,7 +63,7 @@ const UserHeaderInfo = ({ Title, UserName, Image, Follower }) => {
             Type : {Title}
           </Typography>
         </Grid>
-        <Grid item xs={3} sx={{ textAlign: "center", ml: 3, mt: 2 }}>
+        <Grid item xs={3} sm={12}  sx={{ textAlign: "center", ml: {lg: 3, md: 21,sm: 11 }, mt: 2 }}>
           <Typography
             sx={{
               fontSize: 19,

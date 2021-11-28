@@ -33,7 +33,7 @@ function App() {
               <Grid item sx={{ width: "100%" }}>
                 <Box
                   sx={{
-                    width: "121%",
+                    width: { lg: "121%", md: "120%", sm: '118%' },
                     overflowY: "scroll",
                     overflowX: "clip",
                     height: "79vh",

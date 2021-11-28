@@ -31,11 +31,13 @@ const Notification = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{
+      mr: {sm: 2}
+    }}>
       <Box
         sx={{
           "& > :not(style)": {
-            m: 1,
+            m: {lg: 1, sm: 0},
             color: "#ababab !important",
             fontSize: 22,
           },
@@ -56,8 +58,8 @@ const Notification = () => {
       </Box>
       <Menu
         sx={{
-          width: "62%",
-          ml: 44,
+          width: {lg: "62%", sm: '70%'},
+          ml: {lg: 44, md: 29, sm: 14},
           mt: 1,
         }}
         id="basic-menu"

@@ -1,7 +1,7 @@
 import { createStyles, makeStyles } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     "@global": {
       body: {
@@ -41,6 +41,17 @@ const useStyles = makeStyles(() =>
       },
       ".MuiDataGrid-virtualScroller": {
         paddingBottom: "8rem",
+
+        padding: theme.spacing(1),
+        [theme.breakpoints.up("md")]: {
+          backgroundColor: "red",
+        },
+        [theme.breakpoints.up("md")]: {
+          overflow: "scroll",
+        },
+        [theme.breakpoints.up("lg")]: {
+          overflow: "unset !important",
+        },
       },
       ".MuiDataGrid-virtualScrollerContent": {
         height: "55vh !important",
