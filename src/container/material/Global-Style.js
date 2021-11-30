@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) =>
         margin: 0,
         padding: 0,
       },
+      ".authimg": {
+        [theme.breakpoints.up("xs")]: {
+          width: "100%",
+        },
+      },
       ".MuiBadge-badge": {
         width: "5px",
         borderRadius: " 50%",

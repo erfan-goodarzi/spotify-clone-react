@@ -19,6 +19,8 @@ import {
 
 const drawerWidth = 273;
 const drawerWidthMd = 243;
+const drawerWidthSm = 200;
+const drawerWidthXs = 150;
 
 const SideBar = () => {
   return (
@@ -32,7 +34,12 @@ const SideBar = () => {
           [`& .MuiDrawer-paper`]: {
             background: "#1B1A20 !important",
             border: "none",
-            width: { lg: drawerWidth, md: drawerWidthMd },
+            width: {
+              lg: drawerWidth,
+              md: drawerWidthMd,
+              sm: drawerWidthSm,
+              xs: drawerWidthXs,
+            },
             zIndex: "0",
             boxSizing: "border-box",
           },
@@ -87,7 +94,7 @@ const SideBar = () => {
                   <ListItemIcon
                     sx={{
                       minWidth: 37,
-                      fontSize: { lg: 18, md: 12 },
+                      fontSize: { lg: 16, md: 12 },
                       color: "#ababab",
                     }}
                   >
@@ -103,7 +110,7 @@ const SideBar = () => {
                     sx={{
                       color: "#ababab",
                       [`& span`]: {
-                        fontSize: { lg: 18, md: 12 },
+                        fontSize: { lg: 16, md: 12 },
                         fontWeight: "300",
                       },
                     }}
@@ -134,7 +141,7 @@ const SideBar = () => {
                   <ListItemIcon
                     sx={{
                       minWidth: 37,
-                      fontSize: { lg: 18, md: 12 },
+                      fontSize: { lg: 16, md: 12 },
                       color: "#ababab",
                     }}
                   >

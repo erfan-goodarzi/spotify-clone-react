@@ -21,10 +21,7 @@ const Auth = () => {
     >
       <Grid item>
         <img
-          style={{
-            maxWidth: {lg: "100%", md: "10%"},
-            margin: { lg: "3rem 20rem",  sm: "3rem 1rem" },
-          }}
+          className="authimg"
           src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
           alt="spotify logo"
         />
@@ -35,10 +32,10 @@ const Auth = () => {
           color="success"
           sx={{
             textDecoration: "none",
-            margin: "0 20rem",
+            margin: { lg: "0 20rem", xs: "0" },
             color: "#ffff",
             backgroundColor: "#1db954",
-            padding: "13px 61px",
+            padding: {lg: "13px 61px", xs: '10px 20px'},
             borderRadius: "99px",
           }}
           href={accessUrl}

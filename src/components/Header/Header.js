@@ -17,13 +17,13 @@ const Header = () => {
           mt: 3,
         }}
       >
-        <Grid item xs={9}>
+        <Grid item xs={9} sm={9}>
           <SearchBox />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={6} sm={2}>
           <Notification />
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={6} sm={1}>
           <ProfileInfo />
         </Grid>
       </Grid>
