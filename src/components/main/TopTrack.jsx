@@ -172,6 +172,7 @@ const Toptrack = ({ Title }) => {
           {Title}
         </Typography>
         <DataGrid
+          autoHeight
           onRowClick={(e) => {
             dispatch(playSong(e.row));
           }}
@@ -182,7 +183,7 @@ const Toptrack = ({ Title }) => {
           columns={columns}
           showColumnRightBorder={false}
           pageSize={5}
-          rowsPerPageOptions={[4]}
+          rowsPerPageOptions={[5]}
           disableColumnMenu
         />
       </Box>

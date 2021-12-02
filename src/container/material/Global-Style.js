@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) =>
       },
       ".MuiDataGrid-root": {
         border: "none !important",
+        height: '100%'
       },
       ".MuiDataGrid-cell": {
         borderBottom: "none !important",

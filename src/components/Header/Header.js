@@ -1,4 +1,3 @@
-import SideBar from "./menu/SideBar";
 import SearchBox from "./Search/SearchBox";
 import Grid from "@mui/material/Grid";
 import Notification from "./Notif";

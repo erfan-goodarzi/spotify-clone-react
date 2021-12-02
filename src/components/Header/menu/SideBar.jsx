@@ -8,6 +8,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
+import { NavLink } from "react-router-dom";
 import {
   BiHomeAlt,
   BiUserVoice,
@@ -23,6 +24,10 @@ const drawerWidthSm = 200;
 const drawerWidthXs = 150;
 
 const SideBar = () => {
+  let activeStyle = {
+    textDecoration: "line-through",
+    color: "green",
+  };
   return (
     <Box>
       <CssBaseline />
@@ -89,34 +94,41 @@ const SideBar = () => {
                 </ListSubheader>
               }
             >
-              {["Home", "Discover", "Artists"].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 37,
-                      fontSize: { lg: 16, md: 12 },
-                      color: "#ababab",
-                    }}
-                  >
-                    {index % 4 === 0 ? (
-                      <BiHomeAlt />
-                    ) : index % 4 === 1 ? (
-                      <BiSearchAlt />
-                    ) : index % 4 === 2 ? (
-                      <BiUserVoice />
-                    ) : null}
-                  </ListItemIcon>
-                  <ListItemText
-                    sx={{
-                      color: "#ababab",
-                      [`& span`]: {
+              {["home", "discover", "artists"].map((text, index) => (
+                <NavLink
+                  key={text}
+                  to={{ pathname: text, hash: window.location.hash }}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  <ListItem button>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 37,
                         fontSize: { lg: 16, md: 12 },
-                        fontWeight: "300",
-                      },
-                    }}
-                    primary={text}
-                  />
-                </ListItem>
+                        color: "#ababab",
+                      }}
+                    >
+                      {index % 4 === 0 ? (
+                        <BiHomeAlt />
+                      ) : index % 4 === 1 ? (
+                        <BiSearchAlt />
+                      ) : index % 4 === 2 ? (
+                        <BiUserVoice />
+                      ) : null}
+                    </ListItemIcon>
+                    <ListItemText
+                      sx={{
+                        color: "#ababab",
+                        textTransform: "capitalize",
+                        [`& span`]: {
+                          fontSize: { lg: 16, md: 12 },
+                          fontWeight: "300",
+                        },
+                      }}
+                      primary={text}
+                    />
+                  </ListItem>
+                </NavLink>
               ))}
             </List>
             <List

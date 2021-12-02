@@ -3,25 +3,6 @@ import "react-jinke-music-player/assets/index.css";
 import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
 
-const audioList1 = [
-  {
-    name: "Test",
-    singer: "Luis Fonsi",
-    cover:
-      "http://res.cloudinary.com/alick/image/upload/v1502689731/Despacito_uvolhp.jpg",
-    musicSrc:
-      "https://p.scdn.co/mp3-preview/6be8eb12ff18ae09b7a6d38ff1e5327fd128a74e?cid=162b7dc01f3a4a2ca32ed3cec83d1e02",
-  },
-  {
-    name: "Dorost Nemisham",
-    singer: "Sirvan Khosravi",
-    cover:
-      "https://res.cloudinary.com/ehsanahmadi/image/upload/v1573758778/Sirvan-Khosravi-Dorost-Nemisham_glicks.jpg",
-    musicSrc:
-      "https://res.cloudinary.com/ehsanahmadi/video/upload/v1573550770/Sirvan-Khosravi-Dorost-Nemisham-128_kb8urq.mp3",
-  },
-];
-
 const options = {
   defaultPlayIndex: 1,
 

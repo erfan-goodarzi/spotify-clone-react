@@ -8,6 +8,7 @@ import Profile from "./components/Header/Profile/Profile";
 import { Box } from "@mui/system";
 import Header from "./components/Header/Header";
 import Footer from "./components/footer/Footer";
+import Homepage from "./components/main/home/HomePage";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
               <Grid item sx={{ width: "100%" }}>
                 <Box
                   sx={{
-                    width: { lg: "121%", md: "120%", sm: '118%' },
+                    width: { lg: "121%", md: "120%", sm: "118%" },
                     overflowY: "scroll",
                     overflowX: "clip",
                     height: "79vh",
@@ -41,6 +42,7 @@ function App() {
                 >
                   <Routes>
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/home" element={<Homepage />} />
                   </Routes>
                 </Box>
               </Grid>
