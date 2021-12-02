@@ -60,72 +60,6 @@ const columns = [
   },
 ];
 
-// const rows = [
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 1,
-//     album: "Snow",
-//     songs: "I Dont Wanna know",
-//     time: "12:32",
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 2,
-//     album: "Lannister",
-//     songs: "Stuck with U (with Justin Bieber)",
-//     time: 42,
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 3,
-//     album: "Lannister",
-//     songs: "Jaime",
-//     time: 45,
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 4,
-//     album: "Stark",
-//     songs: "Arya",
-//     time: 16,
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 5,
-//     album: "Targaryen",
-//     songs: "Daenerys",
-//     time: 42,
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 6,
-//     album: "Melisandre",
-//     songs: "null",
-//     time: 150,
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 7,
-//     album: "Clifford",
-//     songs: "Ferrara",
-//     time: 44,
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 8,
-//     album: "Frances",
-//     songs: "Rossini",
-//     time: 36,
-//   },
-//   {
-//     img: "https://i.scdn.co/image/ab6775700000ee85c0c1a5be67fc9d046151444f",
-//     id: 9,
-//     album: "Roxie",
-//     songs: "Harvey",
-//     time: 65,
-//   },
-// ];
-
 const Toptrack = ({ Title }) => {
   const dispatch = useDispatch();
   const topTrack = useSelector((state) => state.spotify.getUserTopTrack);
@@ -171,6 +105,7 @@ const Toptrack = ({ Title }) => {
         >
           {Title}
         </Typography>
+
         <DataGrid
           autoHeight
           onRowClick={(e) => {

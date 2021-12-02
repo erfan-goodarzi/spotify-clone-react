@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) =>
       },
       ".MuiDataGrid-root": {
         border: "none !important",
-        height: '100%'
+        height: "100%",
       },
       ".MuiDataGrid-cell": {
         borderBottom: "none !important",
@@ -68,7 +68,8 @@ const useStyles = makeStyles((theme) =>
         color: "#ababab",
       },
       ".MuiTablePagination-root": {
-        marginTop: "26rem !important",
+        marginTop: "-21rem !important",
+        color: '#fff !important'
       },
     },
   })
