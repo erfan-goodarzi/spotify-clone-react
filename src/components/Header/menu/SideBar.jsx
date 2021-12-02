@@ -25,8 +25,8 @@ const drawerWidthXs = 150;
 
 const SideBar = () => {
   let activeStyle = {
-    textDecoration: "line-through",
-    color: "green",
+    textDecoration: "none",
+    color: "#25BF68",
   };
   return (
     <Box>
@@ -98,7 +98,9 @@ const SideBar = () => {
                 <NavLink
                   key={text}
                   to={{ pathname: text, hash: window.location.hash }}
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : { textDecoration: "none" }
+                  }
                 >
                   <ListItem button>
                     <ListItemIcon
