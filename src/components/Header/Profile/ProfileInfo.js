@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
-import { getTokenFromResponse } from "../../../container/config-spotify";
+import { getTokenFromResponse } from "../../../config/config-spotify";
 import { GetUserInfo } from "../../../redux/SpotifySlice";
 import { NavLink } from "react-router-dom";
 import SpotifyWebApi from "spotify-web-api-js";

@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Auth from "./components/auth/Auth";
-import GlobalStyles from "./container/material/Global-Style";
-import { getTokenFromResponse } from "./container/config-spotify";
+import GlobalStyles from "./style/Global-Style";
+import { getTokenFromResponse } from "./config/config-spotify";
 import Grid from "@mui/material/Grid";
 import SideBar from "./components/Header/menu/SideBar";
 import Profile from "./components/Header/Profile/Profile";
