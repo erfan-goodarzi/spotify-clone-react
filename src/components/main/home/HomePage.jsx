@@ -1,4 +1,5 @@
 import Grid from "@mui/material/Grid";
+import Publicplaylist from "../PublicPlaylist";
 import Topbanner from "../TopBanner";
 
 const Homepage = () => {
@@ -16,7 +17,7 @@ const Homepage = () => {
           <Topbanner />
         </Grid>
         <Grid item xs={8}>
-          main
+          <Publicplaylist/>
         </Grid>
         <Grid item xs={8}>
           Latest Releases

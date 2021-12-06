@@ -65,23 +65,28 @@ const Toptrack = ({ Title }) => {
   const topTrack = useSelector((state) => state.spotify.getUserTopTrack);
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
-    spotifyApi.getMyTopTracks({ limit: 20 }).then((res) => {
-      const Fill = res.items.map((item) => {
-        let minutes = Math.floor(item.duration_ms / 60000);
-        let seconds = ((item.duration_ms % 60000) / 1000).toFixed(0);
-        let songTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-        return {
-          cover: item.album.images[2].url,
-          name: item.name,
-          album: item.album.name,
-          time: songTime,
-          id: item.id,
-          singer: item.artists[0].name,
-          musicSrc: item.preview_url,
-        };
-      });
-      dispatch(getUserTopTrack(Fill));
-    });
+    spotifyApi
+      .getMyTopTracks({ limit: 20 })
+      .then((res) => {
+        const Fill = res.items.map((item) => {
+          let minutes = Math.floor(item.duration_ms / 60000);
+          let seconds = ((item.duration_ms % 60000) / 1000).toFixed(0);
+          let songTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+          return {
+            cover: item.album.images[2].url,
+            name: item.name,
+            album: item.album.name,
+            time: songTime,
+            id: item.id,
+            singer: item.artists[0].name,
+            musicSrc: item.preview_url,
+          };
+        });
+        dispatch(getUserTopTrack(Fill));
+      })
+      .catch((err) =>
+        err ? alert("something went wrong. please logged in") : null
+      );
   }, [dispatch]);
 
   return (

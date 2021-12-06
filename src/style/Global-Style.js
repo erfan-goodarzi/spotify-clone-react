@@ -69,7 +69,10 @@ const useStyles = makeStyles((theme) =>
       },
       ".MuiTablePagination-root": {
         marginTop: "-21rem !important",
-        color: '#fff !important'
+        color: "#fff !important",
+      },
+      ".swiper-wrapper": {
+         marginLeft: '-28rem'
       },
     },
   })
