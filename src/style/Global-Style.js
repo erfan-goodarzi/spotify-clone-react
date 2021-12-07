@@ -72,10 +72,10 @@ const useStyles = makeStyles((theme) =>
         color: "#fff !important",
       },
       ".swiper-wrapper": {
-        marginLeft: "-49rem",
+        marginLeft: "-56rem",
       },
       ".swiper-slide": {
-        marginRight: "17rem !important",
+        marginRight: "14rem !important",
       },
       ".MuiAvatarGroup-root .MuiAvatar-root": {
         width: '26px !important',

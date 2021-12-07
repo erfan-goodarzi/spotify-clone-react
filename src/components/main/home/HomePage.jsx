@@ -11,7 +11,7 @@ const Homepage = () => {
         direction="column"
         justifyContent="space-evenly"
         alignItems="right"
-        spacing={12}
+        spacing={3}
       >
         <Grid item xs={8}>
           <Topbanner />
