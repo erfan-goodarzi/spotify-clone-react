@@ -11,7 +11,7 @@ import Playbutton from "../PlayerButton/PlayButton";
 import { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useDispatch } from "react-redux";
-import { getUserTopTrack } from "../../redux/SpotifySlice";
+import { getUserTopTrack, playSong } from "../../redux/SpotifySlice";
 import { useSelector } from "react-redux";
 
 const Img = styled("img")({
@@ -27,6 +27,7 @@ const Publicplaylist = () => {
   const topTrack = useSelector((state) => state.spotify.getUserTopTrack);
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
+    //Get public albums
     spotifyApi
       .getAlbums([
         "5ISVQShioiGcxJVrfQMlzK",
@@ -37,26 +38,58 @@ const Publicplaylist = () => {
       ])
       .then((data) => {
         const Fill = data.albums.map((item) => {
-          console.log(item);
           return {
             cover: item.images[0].url,
             id: item.id,
             name: item.name,
+            song: item.tracks.items.map((url) => {
+              return {
+                cover: item.images[0].url,
+                name: url.name,
+                album: item.name,
+                id: url.id,
+                singer: url.artists[0].name,
+                musicSrc: url.preview_url,
+              };
+            }),
           };
         });
         dispatch(getUserTopTrack(Fill));
       })
       .catch((err) => console.log(err));
+
+    //Play Albums
+    // spotifyApi
+    // .getAlbums([
+    //   "5ISVQShioiGcxJVrfQMlzK",
+    //   "1CIUfTEm0xPgHDUNc6G7rW",
+    //   "1aOnDHUnlmYKRBcof6Y9UV",
+    //   "5meeIKPsm1qLNWTrGMosVp",
+    //   "5ZNIZY6Dg9sC04xsJEBx0o",
+    // ])
+    // .then((data) => {
+    //   const Fill = data.albums.map((item) => {
+    //     console.log(item);
+    //     return {
+    //       cover: item.images[0].url,
+    //       id: item.id,
+    //       name: item.name,
+    //     };
+    //   });
+    //   dispatch(getUserTopTrack(Fill));
+    // })
+    // .catch((err) => console.log(err));
   }, [dispatch]);
   return (
     <>
       <Swiper
-        spaceBetween={293}
-        slidesPerView={5}
-        centeredSlides={true}
-        pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        slidesPerView={4}
+        spaceBetween={296}
+        centeredSlides={false}
+        pagination={{
+          clickable: true,
+        }}
+        className="mySwiper"
       >
         {topTrack.map((song) => (
           <SwiperSlide key={song.id}>
@@ -86,16 +119,17 @@ const Publicplaylist = () => {
                 <Grid item xs={8}>
                   <Img alt={song.name} src={song.cover} />
                   <Box sx={{ position: "absolute", top: "5rem", left: "49px" }}>
-                    <Playbutton />
+                    <Playbutton
+                      onClickHandler={() => {
+                        song.song.map((i) => dispatch(playSong(i)));
+                      }}
+                    />
                   </Box>
                 </Grid>
                 <Grid item xs={4}>
                   <Box>
                     <AvatarGroup max={4} sx={{ mr: "7rem" }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="https://mui.com/static/images/avatar/1.jpg"
-                      />
+                      <Avatar alt="Remy Sharp" src={song.cover} />
                       <Avatar
                         alt="Travis Howard"
                         src="https://mui.com/static/images/avatar/2.jpg"

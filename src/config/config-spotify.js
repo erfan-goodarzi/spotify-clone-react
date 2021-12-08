@@ -4,7 +4,7 @@ const REDIRECT_UIL = "http://localhost:3000/profile";
 
 const scopes = [
   "streaming",
-  "app-remote-control",
+  "app-remote-control", 
   "user-read-currently-playing",
   "user-read-recently-played",
   "user-read-playback-state",

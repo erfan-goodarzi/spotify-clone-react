@@ -114,6 +114,7 @@ const Toptrack = ({ Title }) => {
         <DataGrid
           autoHeight
           onRowClick={(e) => {
+            console.log(e.row)
             dispatch(playSong(e.row));
           }}
           disableColumnSelector
