@@ -4,7 +4,7 @@ const Topbanner = () => {
     <>
       <Box
         sx={{
-          width: 1035,
+          width: 1123,
           height: "43vh",
           backgroundSize: "cover",
           backgroundPosition: "center",

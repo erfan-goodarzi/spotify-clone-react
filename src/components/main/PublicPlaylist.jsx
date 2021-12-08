@@ -42,7 +42,7 @@ const Publicplaylist = () => {
             cover: item.images[0].url,
             id: item.id,
             name: item.name,
-            song: item.tracks.items.map((url) => {
+            track: item.tracks.items.map((url) => {
               return {
                 cover: item.images[0].url,
                 name: url.name,
@@ -57,28 +57,6 @@ const Publicplaylist = () => {
         dispatch(getUserTopTrack(Fill));
       })
       .catch((err) => console.log(err));
-
-    //Play Albums
-    // spotifyApi
-    // .getAlbums([
-    //   "5ISVQShioiGcxJVrfQMlzK",
-    //   "1CIUfTEm0xPgHDUNc6G7rW",
-    //   "1aOnDHUnlmYKRBcof6Y9UV",
-    //   "5meeIKPsm1qLNWTrGMosVp",
-    //   "5ZNIZY6Dg9sC04xsJEBx0o",
-    // ])
-    // .then((data) => {
-    //   const Fill = data.albums.map((item) => {
-    //     console.log(item);
-    //     return {
-    //       cover: item.images[0].url,
-    //       id: item.id,
-    //       name: item.name,
-    //     };
-    //   });
-    //   dispatch(getUserTopTrack(Fill));
-    // })
-    // .catch((err) => console.log(err));
   }, [dispatch]);
   return (
     <>
@@ -121,7 +99,7 @@ const Publicplaylist = () => {
                   <Box sx={{ position: "absolute", top: "5rem", left: "49px" }}>
                     <Playbutton
                       onClickHandler={() => {
-                        song.song.map((i) => dispatch(playSong(i)));
+                        song.track.map((i) => dispatch(playSong(i)));
                       }}
                     />
                   </Box>

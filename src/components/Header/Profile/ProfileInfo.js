@@ -16,7 +16,6 @@ const ProfileInfo = () => {
   useEffect(() => {
     spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     spotifyApi.getMe().then((res) => {
-      console.log(res);
       dispatch(
         GetUserInfo({
           name: res.display_name,
