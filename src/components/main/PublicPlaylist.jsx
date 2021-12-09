@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
+import Stack from "@mui/material/Stack";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
@@ -32,8 +33,6 @@ const Publicplaylist = () => {
       .getAlbums([
         "5ISVQShioiGcxJVrfQMlzK",
         "1CIUfTEm0xPgHDUNc6G7rW",
-        "1aOnDHUnlmYKRBcof6Y9UV",
-        "5meeIKPsm1qLNWTrGMosVp",
         "5ZNIZY6Dg9sC04xsJEBx0o",
       ])
       .then((data) => {
@@ -60,88 +59,86 @@ const Publicplaylist = () => {
   }, [dispatch]);
   return (
     <>
-      <Swiper
-        slidesPerView={4}
-        spaceBetween={296}
-        centeredSlides={false}
-        pagination={{
-          clickable: true,
-        }}
-        className="mySwiper"
+      <Stack
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        spacing={5}
       >
         {topTrack.map((song) => (
-          <SwiperSlide key={song.id}>
-            <Box
-              sx={{
-                flexGrow: 1,
-                width: 350,
-                margin: "2rem 0rem",
+          <Box
+            sx={{
+              flexGrow: 1,
+              maxWidth: 350,
+              margin: "2rem 0rem",
+              transition: "all 0.3s ease-in-out",
+              height: 140,
+              backgroundColor: "#1b1a20",
+              borderRadius: "6px",
+              "&:hover": {
                 transition: "all 0.3s ease-in-out",
-                height: 140,
-                backgroundColor: "#1b1a20",
-                borderRadius: "6px",
-                "&:hover": {
-                  transition: "all 0.3s ease-in-out",
-                  boxShadow: "3px 2px 12px 1px #2c2c2c",
-                  backgroundColor: "#1b1a20f2",
-                  opacity: [0.9, 0.8, 0.7],
-                },
-              }}
+                boxShadow: "3px 2px 12px 1px #2c2c2c",
+                backgroundColor: "#1b1a20f2",
+                opacity: [0.9, 0.8, 0.7],
+              },
+            }}
+          >
+            <Grid
+              container
+              direction="row"
+              justifyContent="flex-start"
+              alignItems="center"
             >
-              <Grid
-                container
-                direction="row"
-                justifyContent="flex-start"
-                alignItems="center"
-              >
-                <Grid item xs={8}>
-                  <Img alt={song.name} src={song.cover} />
-                  <Box sx={{ position: "absolute", top: "5rem", left: "49px" }}>
-                    <Playbutton
-                      onClickHandler={() => {
-                        song.track.map((i) => dispatch(playSong(i)));
-                      }}
-                    />
-                  </Box>
-                </Grid>
-                <Grid item xs={4}>
-                  <Box>
-                    <AvatarGroup max={4} sx={{ mr: "7rem" }}>
-                      <Avatar alt="Remy Sharp" src={song.cover} />
-                      <Avatar
-                        alt="Travis Howard"
-                        src="https://mui.com/static/images/avatar/2.jpg"
-                      />
-                      <Avatar
-                        alt="Cindy Baker"
-                        src="https://mui.com/static/images/avatar/3.jpg"
-                      />
-                      <Avatar
-                        alt="Agnes Walker"
-                        src="https://mui.com/static/images/avatar/4.jpg"
-                      />
-                      <Avatar
-                        alt="Trevor Henderson"
-                        src="https://mui.com/static/images/avatar/5.jpg"
-                      />
-                    </AvatarGroup>
-                    <Typography
-                      sx={{
-                        fontSize: 18,
-                        fontWeight: "300",
-                        color: "#ddd",
-                        margin: "-78px -100px",
-                      }}
-                    >
-                      {song.name}
-                    </Typography>
-                  </Box>
-                </Grid>
+              <Grid item xs={8}>
+                <Img alt={song.name} src={song.cover} />
+                <Box sx={{ position: "relative", top: "-88px", left: "3rem" }}>
+                  <Playbutton
+                    onClickHandler={() => {
+                      song.track.map((i) => dispatch(playSong(i)));
+                    }}
+                  />
+                </Box>
               </Grid>
-            </Box>
-          </SwiperSlide>
+              <Grid item xs={4}>
+                <Box>
+                  <AvatarGroup
+                    max={4}
+                    sx={{ position: "relative", left: "-8rem", top: "-2rem" }}
+                  >
+                    <Avatar alt="Remy Sharp" src={song.cover} />
+                    <Avatar
+                      alt="Travis Howard"
+                      src="https://mui.com/static/images/avatar/2.jpg"
+                    />
+                    <Avatar
+                      alt="Cindy Baker"
+                      src="https://mui.com/static/images/avatar/3.jpg"
+                    />
+                    <Avatar
+                      alt="Agnes Walker"
+                      src="https://mui.com/static/images/avatar/4.jpg"
+                    />
+                    <Avatar
+                      alt="Trevor Henderson"
+                      src="https://mui.com/static/images/avatar/5.jpg"
+                    />
+                  </AvatarGroup>
+                  <Typography
+                    sx={{
+                      fontSize: 18,
+                      fontWeight: "300",
+                      color: "#ddd",
+                      margin: "-101px -92px",
+                    }}
+                  >
+                    {song.name}
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
         ))}
-      </Swiper>
+      </Stack>
     </>
   );
 };
