@@ -1,4 +1,6 @@
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import LatsetRelease from "../LatestRelease";
 import Publicplaylist from "../PublicPlaylist";
 import Topbanner from "../TopBanner";
 
@@ -17,10 +19,30 @@ const Homepage = () => {
           <Topbanner />
         </Grid>
         <Grid item xs={8}>
-          <Publicplaylist/>
+          <Typography
+            sx={{
+              lineHeight: "1px",
+              mt: 3,
+              fontSize: "27px",
+              color: "#fff",
+              fontWeight: " 700",
+            }}
+          >
+            Top Playlist
+          </Typography>
+          <Publicplaylist />
         </Grid>
         <Grid item xs={8}>
-          Latest Releases
+          <Typography
+            sx={{
+              fontSize: "27px",
+              color: "#fff",
+              fontWeight: " 700",
+            }}
+          >
+            Latest Releases
+          </Typography>
+          <LatsetRelease />
         </Grid>
       </Grid>
     </>
