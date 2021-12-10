@@ -5,15 +5,13 @@ import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Stack from "@mui/material/Stack";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
 import Playbutton from "../PlayerButton/PlayButton";
 import { useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useDispatch } from "react-redux";
 import { getUserTopTrack, playSong } from "../../redux/SpotifySlice";
 import { useSelector } from "react-redux";
+import { getTokenFromResponse } from "../../config/config-spotify";
 
 const Img = styled("img")({
   margin: "17px 16px",
@@ -28,6 +26,7 @@ const Publicplaylist = () => {
   const topTrack = useSelector((state) => state.spotify.getUserTopTrack);
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
+    spotifyApi.setAccessToken(getTokenFromResponse().access_token)
     //Get public albums
     spotifyApi
       .getAlbums([
@@ -67,6 +66,7 @@ const Publicplaylist = () => {
       >
         {topTrack.map((song) => (
           <Box
+          key={song.id}
             sx={{
               flexGrow: 1,
               maxWidth: 350,

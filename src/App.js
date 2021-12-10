@@ -9,8 +9,11 @@ import { Box } from "@mui/system";
 import Header from "./components/Header/Header";
 import Footer from "./components/footer/Footer";
 import Homepage from "./components/main/home/HomePage";
+import { useSelector } from "react-redux";
 
 function App() {
+  const searchResult = useSelector((state) => state.spotify.searchResult);
+
   return (
     <div className="App">
       <GlobalStyles />
@@ -21,6 +24,7 @@ function App() {
           </Grid>
           <Grid item xs={8} container direction="column">
             <Header />
+
             <Grid
               item
               xs
@@ -40,6 +44,9 @@ function App() {
                     height: "79vh",
                   }}
                 >
+                  {searchResult.map((res) => (
+                    <p>{res.name}</p>
+                  ))}
                   <Routes>
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/home" element={<Homepage />} />

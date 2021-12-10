@@ -9,12 +9,14 @@ import { getNewRelease } from "../../redux/SpotifySlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
+import { getTokenFromResponse } from "../../config/config-spotify";
 
 const LatsetRelease = () => {
   const newRelease = useSelector((state) => state.spotify.NewRelease);
   const dispatch = useDispatch();
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
+    spotifyApi.setAccessToken(getTokenFromResponse().access_token)
     //Get public albums
     spotifyApi.getNewReleases({ limit: 20 }).then((res) => {
       const songs = res.albums.items;
