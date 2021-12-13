@@ -22,7 +22,7 @@ const SearchBox = () => {
   };
   const handleClose = (e) => {
     setAnchorEl(null);
-    console.log(e.target.textContent);
+    setTypeOfSearch(e.target.textContent);
   };
   const dispatch = useDispatch();
   const spotifyApi = new SpotifyWebApi();
