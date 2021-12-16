@@ -15,7 +15,8 @@ import { getTokenFromResponse } from "../../../config/config-spotify";
 
 const SearchBox = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [typeOfSearch, setTypeOfSearch] = useState("album");
+  const [typeOfSearch, setTypeOfSearch] = useState("artist");
+  const [querySearch, setQuerySearch] = useState("");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -26,12 +27,13 @@ const SearchBox = () => {
   };
   const dispatch = useDispatch();
   const spotifyApi = new SpotifyWebApi();
+  const searchHandler = (e) => setQuerySearch(e.target.value);
   useEffect(() => {
     //get Access Token
     spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     //Search Song
     spotifyApi
-      .search("taylor", [typeOfSearch])
+      .search(querySearch, [typeOfSearch], {limit: 5})
       .then((res) => {
         console.log(res);
         const checkSearchType =
@@ -62,7 +64,7 @@ const SearchBox = () => {
         dispatch(searchResult(newTrack));
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [querySearch, typeOfSearch]);
 
   return (
     <Paper
@@ -79,10 +81,11 @@ const SearchBox = () => {
         borderRadius: "6px",
       }}
     >
-      <IconButton sx={{ p: "10px", color: "#ababab" }} aria-label="menu">
+      <IconButton type="submit"  sx={{ p: "10px", color: "#ababab" }} aria-label="menu">
         <BiSearch />
       </IconButton>
       <InputBase
+        onChange={searchHandler}
         sx={{
           ml: 1,
           flex: 1,
@@ -118,11 +121,11 @@ const SearchBox = () => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}>Album</MenuItem>
-        <MenuItem onClick={handleClose}>Artist</MenuItem>
-        <MenuItem onClick={handleClose}>Track</MenuItem>
-        <MenuItem onClick={handleClose}>Playlist</MenuItem>
-        <MenuItem onClick={handleClose}>Episode</MenuItem>
+        <MenuItem onClick={handleClose}>album</MenuItem>
+        <MenuItem onClick={handleClose}>artist</MenuItem>
+        <MenuItem onClick={handleClose}>track</MenuItem>
+        <MenuItem onClick={handleClose}>playlist</MenuItem>
+        <MenuItem onClick={handleClose}>episode</MenuItem>
       </Menu>
     </Paper>
   );
