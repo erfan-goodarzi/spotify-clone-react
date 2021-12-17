@@ -10,10 +10,10 @@ import Header from "./components/Header/Header";
 import Footer from "./components/footer/Footer";
 import Homepage from "./components/main/home/HomePage";
 import { useSelector } from "react-redux";
+import Toptrack from "./components/main/TopTrack";
 
 function App() {
   const searchResult = useSelector((state) => state.spotify.searchResult);
-
   return (
     <div className="App">
       <GlobalStyles />
@@ -44,9 +44,11 @@ function App() {
                     height: "79vh",
                   }}
                 >
-                  {searchResult.map((res) => (
-                    <p>{res.name}</p>
-                  ))}
+                  {searchResult.length === 0 ? null : (
+                    <Grid sx={{ mr: "171px" }}>
+                      <Toptrack Title="Search Result" Track={searchResult} />
+                    </Grid>
+                  )}
                   <Routes>
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/home" element={<Homepage />} />

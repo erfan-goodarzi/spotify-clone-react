@@ -1,11 +1,8 @@
 import { DataGrid } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
 import { Divider, Typography } from "@mui/material";
-import SpotifyWebApi from "spotify-web-api-js";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getUserTopTrack, playSong } from "../../redux/SpotifySlice";
-import { useSelector } from "react-redux";
+import { playSong } from "../../redux/SpotifySlice";
 import Playbutton from "../PlayerButton/PlayButton";
 
 const columns = [
@@ -60,38 +57,10 @@ const columns = [
   },
 ];
 
-const Toptrack = ({ Title }) => {
+const Toptrack = ({ Title, Track }) => {
   const dispatch = useDispatch();
-  const topTrack = useSelector((state) => state.spotify.getUserTopTrack);
-  const spotifyApi = new SpotifyWebApi();
-  useEffect(() => {
-    spotifyApi
-      .getMyTopTracks({ limit: 20 })
-      .then((res) => {
-        const Fill = res.items.map((item) => {
-          let minutes = Math.floor(item.duration_ms / 60000);
-          let seconds = ((item.duration_ms % 60000) / 1000).toFixed(0);
-          let songTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-          return {
-            cover: item.album.images[2].url,
-            name: item.name,
-            album: item.album.name,
-            time: songTime,
-            id: item.id,
-            singer: item.artists[0].name,
-            musicSrc: item.preview_url,
-          };
-        });
-        dispatch(getUserTopTrack(Fill));
-      })
-      .catch((err) =>
-        err ? alert("something went wrong. please logged in") : null
-      );
-  }, [dispatch]);
-
   return (
     <>
-      <Divider sx={{ mt: 4, ml: 22 }} />
       <Box
         sx={{
           width: { lg: "100%", md: "97%", sm: "97%" },
@@ -110,15 +79,18 @@ const Toptrack = ({ Title }) => {
         >
           {Title}
         </Typography>
-
         <DataGrid
           autoHeight
           onRowClick={(e) => {
-            dispatch(playSong(e.row));
+            if (e.row.musicSrc === null) {
+              alert("This song cannot be played");
+            } else {
+              dispatch(playSong(e.row));
+            }
           }}
           disableColumnSelector
           disableSelectionOnClick
-          rows={topTrack}
+          rows={Track}
           ColumnUnsortedIcon={false}
           columns={columns}
           showColumnRightBorder={false}

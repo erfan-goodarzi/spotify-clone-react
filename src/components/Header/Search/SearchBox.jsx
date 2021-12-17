@@ -5,6 +5,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import { BiSearch } from "react-icons/bi";
+import { VscClose } from "react-icons/vsc";
 import { GoSettings } from "react-icons/go";
 import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
@@ -15,7 +16,7 @@ import { getTokenFromResponse } from "../../../config/config-spotify";
 
 const SearchBox = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [typeOfSearch, setTypeOfSearch] = useState("artist");
+  const [typeOfSearch, setTypeOfSearch] = useState("track");
   const [querySearch, setQuerySearch] = useState("");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -27,15 +28,25 @@ const SearchBox = () => {
   };
   const dispatch = useDispatch();
   const spotifyApi = new SpotifyWebApi();
-  const searchHandler = (e) => setQuerySearch(e.target.value);
+
+  const searchHandler = (e) => {
+    if (e.target.value === "") {
+      dispatch(searchResult([]));
+    }
+    setQuerySearch(e.target.value);
+  };
+
+  const setEmptyInput = () => {
+    dispatch(searchResult([]));
+    setQuerySearch('');
+  };
   useEffect(() => {
     //get Access Token
     spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     //Search Song
     spotifyApi
-      .search(querySearch, [typeOfSearch], {limit: 5})
+      .search(querySearch, [typeOfSearch])
       .then((res) => {
-        console.log(res);
         const checkSearchType =
           res.artists ||
           res.albums ||
@@ -47,18 +58,35 @@ const SearchBox = () => {
           alert("nothing found");
         }
         const newTrack = search.map((song) => {
-          console.log(song);
+          let minutes = Math.floor(song.duration_ms / 60000);
+          let seconds = ((song.duration_ms % 60000) / 1000).toFixed(0);
+          let songTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+          console.log(song)
           return {
             cover:
               typeOfSearch === "track"
                 ? song.album.images.length === 0
                   ? null
-                  : song.album.images[1].url
+                  : song.album.images[2].url
                 : song.images.length === 0
                 ? null
-                : song.images[1].url,
+                : song.images[2].url,
+            name: song.name,
+            album: song.name,
+            time:
+              typeOfSearch === "artist" || typeOfSearch === "playlist"
+                ? null
+                : songTime,
             id: typeOfSearch === "track" ? song.album.id : song.id,
-            name: typeOfSearch === "track" ? song.album.name : song.name,
+            singer:
+              typeOfSearch === "artist"
+                ? null
+                : typeOfSearch === "playlist"
+                ? song.owner.display_name
+                : typeOfSearch === "episode"
+                ? song.name
+                : song.artists[0].name,
+            musicSrc: typeOfSearch !== "artist" ? song.preview_url : null,
           };
         });
         dispatch(searchResult(newTrack));
@@ -81,10 +109,22 @@ const SearchBox = () => {
         borderRadius: "6px",
       }}
     >
-      <IconButton type="submit"  sx={{ p: "10px", color: "#ababab" }} aria-label="menu">
-        <BiSearch />
-      </IconButton>
+      {!querySearch ? (
+        <IconButton sx={{ p: "10px", color: "#ababab" }} aria-label="menu">
+          <BiSearch />
+        </IconButton>
+      ) : (
+        <IconButton
+          sx={{ p: "10px", color: "#ababab" }}
+          aria-label="menu"
+          onClick={setEmptyInput}
+        >
+          <VscClose />
+        </IconButton>
+      )}
+
       <InputBase
+        value={querySearch}
         onChange={searchHandler}
         sx={{
           ml: 1,
@@ -121,9 +161,9 @@ const SearchBox = () => {
           "aria-labelledby": "basic-button",
         }}
       >
+        <MenuItem onClick={handleClose}>track</MenuItem>
         <MenuItem onClick={handleClose}>album</MenuItem>
         <MenuItem onClick={handleClose}>artist</MenuItem>
-        <MenuItem onClick={handleClose}>track</MenuItem>
         <MenuItem onClick={handleClose}>playlist</MenuItem>
         <MenuItem onClick={handleClose}>episode</MenuItem>
       </Menu>
