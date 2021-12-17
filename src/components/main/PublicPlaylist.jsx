@@ -55,7 +55,7 @@ const Publicplaylist = () => {
         dispatch(getUserTopTrack(Fill));
       })
       .catch((err) => console.log(err));
-  }, [dispatch]);
+  }, []);
   return (
     <>
       <Stack

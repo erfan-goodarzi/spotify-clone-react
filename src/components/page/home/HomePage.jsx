@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import LatsetRelease from "../LatestRelease";
-import Publicplaylist from "../PublicPlaylist";
-import Topbanner from "../TopBanner";
+import LatsetRelease from "../../../components/main/LatestRelease";
+import Publicplaylist from "../../../components/main/PublicPlaylist";
+import Topbanner from "../../../components/main/TopBanner";
 
 const Homepage = () => {
   return (

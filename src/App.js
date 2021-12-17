@@ -8,7 +8,7 @@ import Profile from "./components/Header/Profile/Profile";
 import { Box } from "@mui/system";
 import Header from "./components/Header/Header";
 import Footer from "./components/footer/Footer";
-import Homepage from "./components/main/home/HomePage";
+import Homepage from "./components/page/home/HomePage";
 import { useSelector } from "react-redux";
 import Toptrack from "./components/main/TopTrack";
 

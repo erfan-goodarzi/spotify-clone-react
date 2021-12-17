@@ -38,7 +38,7 @@ const SearchBox = () => {
 
   const setEmptyInput = () => {
     dispatch(searchResult([]));
-    setQuerySearch('');
+    setQuerySearch("");
   };
   useEffect(() => {
     //get Access Token
@@ -61,7 +61,7 @@ const SearchBox = () => {
           let minutes = Math.floor(song.duration_ms / 60000);
           let seconds = ((song.duration_ms % 60000) / 1000).toFixed(0);
           let songTime = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-          console.log(song)
+          console.log(song);
           return {
             cover:
               typeOfSearch === "track"

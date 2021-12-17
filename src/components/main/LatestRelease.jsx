@@ -12,11 +12,11 @@ import "swiper/swiper.min.css";
 import { getTokenFromResponse } from "../../config/config-spotify";
 
 const LatsetRelease = () => {
-  const newRelease = useSelector((state) => state.spotify.NewRelease);
+  const newRelease = useSelector((state) => state.spotify.newRelease);
   const dispatch = useDispatch();
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
-    spotifyApi.setAccessToken(getTokenFromResponse().access_token)
+    spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     //Get public albums
     spotifyApi.getNewReleases({ limit: 20 }).then((res) => {
       const songs = res.albums.items;
@@ -29,7 +29,7 @@ const LatsetRelease = () => {
       });
       dispatch(getNewRelease(newTrack));
     });
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Swiper
