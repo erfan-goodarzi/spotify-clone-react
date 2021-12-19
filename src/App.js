@@ -1,16 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import Auth from "./components/auth/Auth";
-import GlobalStyles from "./style/Global-Style";
-import { getTokenFromResponse } from "./config/config-spotify";
-import Grid from "@mui/material/Grid";
-import SideBar from "./components/Header/menu/SideBar";
-import Profile from "./components/Header/Profile/Profile";
-import { Box } from "@mui/system";
-import Header from "./components/Header/Header";
-import Footer from "./components/footer/Footer";
-import Homepage from "./components/page/home/HomePage";
-import { useSelector } from "react-redux";
-import Toptrack from "./components/main/TopTrack";
+import { Routes, Route } from 'react-router-dom';
+import Auth from './components/auth/Auth';
+import GlobalStyles from './style/Global-Style';
+import { getTokenFromResponse } from './config/config-spotify';
+import Grid from '@mui/material/Grid';
+import SideBar from './components/Header/menu/SideBar';
+import Profile from './components/Header/Profile/Profile';
+import { Box } from '@mui/system';
+import Header from './components/Header/Header';
+import Footer from './components/footer/Footer';
+import Homepage from './components/page/home/HomePage';
+import { useSelector } from 'react-redux';
+import Toptrack from './components/main/TopTrack';
 
 function App() {
   const searchResult = useSelector((state) => state.spotify.searchResult);
@@ -35,17 +35,17 @@ function App() {
                 mt: 3,
               }}
             >
-              <Grid item sx={{ width: "100%" }}>
+              <Grid item sx={{ width: '100%' }}>
                 <Box
                   sx={{
-                    width: { lg: "121%", md: "120%", sm: "118%" },
-                    overflowY: "scroll",
-                    overflowX: "clip",
-                    height: "79vh",
+                    width: { lg: '121%', md: '120%', sm: '118%' },
+                    overflowY: 'scroll',
+                    overflowX: 'clip',
+                    height: '79vh',
                   }}
                 >
                   {searchResult.length === 0 ? null : (
-                    <Grid sx={{ mr: "171px" }}>
+                    <Grid sx={{ mr: '171px' }}>
                       <Toptrack Title="Search Result" Track={searchResult} />
                     </Grid>
                   )}
