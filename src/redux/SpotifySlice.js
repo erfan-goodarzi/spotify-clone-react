@@ -14,6 +14,7 @@ const initialState = {
   playSong: [],
   searchResult: [],
   userPlaylist: [],
+  allCategory: [],
 };
 
 export const SpotifySlice = createSlice({
@@ -41,6 +42,9 @@ export const SpotifySlice = createSlice({
     getUserPlaylist: (state, action) => {
       state.userPlaylist = action.payload;
     },
+    showAllCategory: (state, action) => {
+      state.allCategory = action.payload;
+    },
   },
 });
 
@@ -52,6 +56,7 @@ export const {
   getNewRelease,
   searchResult,
   getUserPlaylist,
+  showAllCategory
 } = SpotifySlice.actions;
 
 export default SpotifySlice.reducer;

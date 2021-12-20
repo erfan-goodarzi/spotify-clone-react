@@ -9,28 +9,29 @@ import { Box } from '@mui/system';
 import Header from './components/Header/Header';
 import Footer from './components/footer/Footer';
 import Homepage from './components/page/home/HomePage';
+import Discover from './components/page/discover/Discover';
 import { useSelector } from 'react-redux';
 import Toptrack from './components/main/TopTrack';
 
 function App() {
   const searchResult = useSelector((state) => state.spotify.searchResult);
   return (
-    <div className="App">
+    <div className='App'>
       <GlobalStyles />
       {getTokenFromResponse().access_token ? (
         <Grid container>
           <Grid item xs={2} sx={{ ml: 4 }}>
             <SideBar />
           </Grid>
-          <Grid item xs={8} container direction="column">
+          <Grid item xs={8} container direction='column'>
             <Header />
 
             <Grid
               item
               xs
               container
-              direction="row"
-              alignItems="center"
+              direction='row'
+              alignItems='center'
               sx={{
                 mt: 3,
               }}
@@ -46,12 +47,13 @@ function App() {
                 >
                   {searchResult.length === 0 ? null : (
                     <Grid sx={{ mr: '171px' }}>
-                      <Toptrack Title="Search Result" Track={searchResult} />
+                      <Toptrack Title='Search Result' Track={searchResult} />
                     </Grid>
                   )}
                   <Routes>
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/home" element={<Homepage />} />
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/home' element={<Homepage />} />
+                    <Route path='/discover' element={<Discover />} />
                   </Routes>
                 </Box>
               </Grid>
@@ -61,11 +63,10 @@ function App() {
         </Grid>
       ) : (
         <Routes>
-          <Route path="/" element={<Auth />} />
+          <Route path='/' element={<Auth />} />
         </Routes>
       )}
     </div>
   );
 }
-
 export default App;
