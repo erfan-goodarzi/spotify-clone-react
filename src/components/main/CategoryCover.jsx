@@ -19,7 +19,7 @@ const CategoryCover = () => {
       console.log(res);
       dispatch(showAllCategory(res.categories.items));
     });
-  }, [dispatch]);
+  }, []);
 
   return (
     <Box sx={{ width: '97%', p: '1px 9px' }}>
@@ -36,8 +36,27 @@ const CategoryCover = () => {
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {console.log(allCategory)}
         {allCategory.map((item) => (
-          <Grid item xs={3}>
-            <p>{item.name}</p>
+          <Grid key={item.id} item xs={3} sx={{ mb: 3 }}>
+            <Typography sx={{ p: '13px 1px', fontSize: 18, color: '#ddd' }}>
+              {item.name}
+            </Typography>
+            <Box
+              sx={{
+                overflow: 'hidden',
+              }}
+            >
+              <a
+                href={`https://open.spotify.com/genre/${item.id}-page`}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img
+                  className='category-cover'
+                  src={item.icons[0].url}
+                  alt={item.id}
+                />
+              </a>
+            </Box>
           </Grid>
         ))}
       </Grid>

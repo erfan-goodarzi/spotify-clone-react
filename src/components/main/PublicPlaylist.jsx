@@ -1,39 +1,35 @@
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
-import Avatar from "@mui/material/Avatar";
-import AvatarGroup from "@mui/material/AvatarGroup";
-import Stack from "@mui/material/Stack";
-import Playbutton from "../PlayerButton/PlayButton";
-import { useEffect } from "react";
-import SpotifyWebApi from "spotify-web-api-js";
-import { useDispatch } from "react-redux";
-import { getUserTopTrack, playSong } from "../../redux/SpotifySlice";
-import { useSelector } from "react-redux";
-import { getTokenFromResponse } from "../../config/config-spotify";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Stack from '@mui/material/Stack';
+import Playbutton from '../PlayerButton/PlayButton';
+import { useEffect } from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
+import { useDispatch } from 'react-redux';
+import { getUserTopTrack, playSong } from '../../redux/SpotifySlice';
+import { useSelector } from 'react-redux';
+import { getTokenFromResponse } from '../../config/config-spotify';
 
-const Img = styled("img")({
-  margin: "17px 16px",
-  display: "flex",
+const Img = styled('img')({
+  margin: '17px 16px',
+  display: 'flex',
   width: 107,
   height: 107,
-  borderRadius: "6px",
+  borderRadius: '6px',
 });
 
-const Publicplaylist = () => {
+const Publicplaylist = ({ Albums }) => {
   const dispatch = useDispatch();
   const topTrack = useSelector((state) => state.spotify.getUserTopTrack);
   const spotifyApi = new SpotifyWebApi();
   useEffect(() => {
-    spotifyApi.setAccessToken(getTokenFromResponse().access_token)
+    spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     //Get public albums
     spotifyApi
-      .getAlbums([
-        "5ISVQShioiGcxJVrfQMlzK",
-        "1CIUfTEm0xPgHDUNc6G7rW",
-        "5ZNIZY6Dg9sC04xsJEBx0o",
-      ])
+      .getAlbums(Albums)
       .then((data) => {
         const Fill = data.albums.map((item) => {
           return {
@@ -59,39 +55,39 @@ const Publicplaylist = () => {
   return (
     <>
       <Stack
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="center"
+        direction='row'
+        justifyContent='flex-start'
+        alignItems='center'
         spacing={5}
       >
         {topTrack.map((song) => (
           <Box
-          key={song.id}
+            key={song.id}
             sx={{
               flexGrow: 1,
               maxWidth: 350,
-              margin: "2rem 0rem",
-              transition: "all 0.3s ease-in-out",
+              margin: '2rem 0rem',
+              transition: 'all 0.3s ease-in-out',
               height: 140,
-              backgroundColor: "#1b1a20",
-              borderRadius: "6px",
-              "&:hover": {
-                transition: "all 0.3s ease-in-out",
-                boxShadow: "3px 2px 12px 1px #2c2c2c",
-                backgroundColor: "#1b1a20f2",
+              backgroundColor: '#1b1a20',
+              borderRadius: '6px',
+              '&:hover': {
+                transition: 'all 0.3s ease-in-out',
+                boxShadow: '3px 2px 12px 1px #2c2c2c',
+                backgroundColor: '#1b1a20f2',
                 opacity: [0.9, 0.8, 0.7],
               },
             }}
           >
             <Grid
               container
-              direction="row"
-              justifyContent="flex-start"
-              alignItems="center"
+              direction='row'
+              justifyContent='flex-start'
+              alignItems='center'
             >
               <Grid item xs={8}>
                 <Img alt={song.name} src={song.cover} />
-                <Box sx={{ position: "relative", top: "-88px", left: "3rem" }}>
+                <Box sx={{ position: 'relative', top: '-88px', left: '3rem' }}>
                   <Playbutton
                     onClickHandler={() => {
                       song.track.map((i) => dispatch(playSong(i)));
@@ -103,32 +99,32 @@ const Publicplaylist = () => {
                 <Box>
                   <AvatarGroup
                     max={4}
-                    sx={{ position: "relative", left: "-8rem", top: "-2rem" }}
+                    sx={{ position: 'relative', left: '-8rem', top: '-2rem' }}
                   >
-                    <Avatar alt="Remy Sharp" src={song.cover} />
+                    <Avatar alt='Remy Sharp' src={song.cover} />
                     <Avatar
-                      alt="Travis Howard"
-                      src="https://mui.com/static/images/avatar/2.jpg"
+                      alt='Travis Howard'
+                      src='https://mui.com/static/images/avatar/2.jpg'
                     />
                     <Avatar
-                      alt="Cindy Baker"
-                      src="https://mui.com/static/images/avatar/3.jpg"
+                      alt='Cindy Baker'
+                      src='https://mui.com/static/images/avatar/3.jpg'
                     />
                     <Avatar
-                      alt="Agnes Walker"
-                      src="https://mui.com/static/images/avatar/4.jpg"
+                      alt='Agnes Walker'
+                      src='https://mui.com/static/images/avatar/4.jpg'
                     />
                     <Avatar
-                      alt="Trevor Henderson"
-                      src="https://mui.com/static/images/avatar/5.jpg"
+                      alt='Trevor Henderson'
+                      src='https://mui.com/static/images/avatar/5.jpg'
                     />
                   </AvatarGroup>
                   <Typography
                     sx={{
                       fontSize: 18,
-                      fontWeight: "300",
-                      color: "#ddd",
-                      margin: "-101px -92px",
+                      fontWeight: '300',
+                      color: '#ddd',
+                      margin: '-101px -92px',
                     }}
                   >
                     {song.name}
