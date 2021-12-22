@@ -12,6 +12,7 @@ import Homepage from './components/page/home/HomePage';
 import Discover from './components/page/discover/Discover';
 import { useSelector } from 'react-redux';
 import Toptrack from './components/main/TopTrack';
+import Podcast from './components/page/podcast/Podcast';
 
 function App() {
   const searchResult = useSelector((state) => state.spotify.searchResult);
@@ -54,6 +55,7 @@ function App() {
                     <Route path='/profile' element={<Profile />} />
                     <Route path='/home' element={<Homepage />} />
                     <Route path='/discover' element={<Discover />} />
+                    <Route path='/podcast' element={<Podcast />} />
                   </Routes>
                 </Box>
               </Grid>

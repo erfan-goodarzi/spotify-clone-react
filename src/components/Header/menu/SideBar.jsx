@@ -1,27 +1,26 @@
-import { useEffect } from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
-import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import SpotifyWebApi from "spotify-web-api-js";
-import { getTokenFromResponse } from "../../../config/config-spotify";
-import { getUserPlaylist } from "../../../redux/SpotifySlice";
+import { useEffect } from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import SpotifyWebApi from 'spotify-web-api-js';
+import { getTokenFromResponse } from '../../../config/config-spotify';
+import { getUserPlaylist } from '../../../redux/SpotifySlice';
 import {
   BiHomeAlt,
-  BiUserVoice,
   BiSearchAlt,
   BiPodcast,
   BiHeart,
   BiMusic,
-} from "react-icons/bi";
+} from 'react-icons/bi';
 
 const drawerWidth = 273;
 const drawerWidthMd = 243;
@@ -35,35 +34,35 @@ const SideBar = () => {
   useEffect(() => {
     spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     //Get Playlist
-    spotifyApi.getUserPlaylists("cdasgbwskid81gi3g3x15z14v").then((res) => {
+    spotifyApi.getUserPlaylists('cdasgbwskid81gi3g3x15z14v').then((res) => {
       dispatch(getUserPlaylist(res.items));
       console.log(res.items);
     });
   }, [dispatch]);
 
   let activeStyle = {
-    textDecoration: "none",
-    color: "#25BF68",
+    textDecoration: 'none',
+    color: '#25BF68',
   };
   return (
     <Box>
       <CssBaseline />
       <Drawer
-        variant="permanent"
+        variant='permanent'
         sx={{
           width: drawerWidth,
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
-            background: "#1B1A20 !important",
-            border: "none",
+            background: '#1B1A20 !important',
+            border: 'none',
             width: {
               lg: drawerWidth,
               md: drawerWidthMd,
               sm: drawerWidthSm,
               xs: drawerWidthXs,
             },
-            zIndex: "0",
-            boxSizing: "border-box",
+            zIndex: '0',
+            boxSizing: 'border-box',
           },
         }}
       >
@@ -72,38 +71,38 @@ const SideBar = () => {
             ml: 4,
           }}
         >
-          <Toolbar sx={{ display: "flex", alignItems: "center", mt: 3, mb: 2 }}>
+          <Toolbar sx={{ display: 'flex', alignItems: 'center', mt: 3, mb: 2 }}>
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
-              alt=""
+              src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png'
+              alt=''
               style={{
-                width: "26px",
-                margin: "19px -10px",
+                width: '26px',
+                margin: '19px -10px',
               }}
             />
             <Typography
               sx={{
-                color: "#25BF68",
+                color: '#25BF68',
                 ml: 3,
                 fontSize: 18,
-                fontWeight: "400",
-                letterSpacing: "3px",
+                fontWeight: '400',
+                letterSpacing: '3px',
               }}
             >
               SPOTIFY
             </Typography>
           </Toolbar>
-          <Box sx={{ overflow: "auto", color: "#818285" }}>
+          <Box sx={{ overflow: 'auto', color: '#818285' }}>
             <List
               subheader={
                 <ListSubheader
-                  component="div"
-                  id="nested-list-subheader"
+                  component='div'
+                  id='nested-list-subheader'
                   sx={{
-                    background: "transparent",
-                    color: "#F3F3F3",
-                    letterSpacing: "1px",
-                    fontWeight: "400",
+                    background: 'transparent',
+                    color: '#F3F3F3',
+                    letterSpacing: '1px',
+                    fontWeight: '400',
                     fontSize: { lg: 16, md: 12 },
                   }}
                 >
@@ -111,12 +110,12 @@ const SideBar = () => {
                 </ListSubheader>
               }
             >
-              {["home", "discover"].map((text, index) => (
+              {['home', 'discover', 'podcast'].map((text, index) => (
                 <NavLink
                   key={text}
                   to={{ pathname: text, hash: window.location.hash }}
                   style={({ isActive }) =>
-                    isActive ? activeStyle : { textDecoration: "none" }
+                    isActive ? activeStyle : { textDecoration: 'none' }
                   }
                 >
                   <ListItem button>
@@ -124,7 +123,7 @@ const SideBar = () => {
                       sx={{
                         minWidth: 37,
                         fontSize: { lg: 16, md: 12 },
-                        color: "#ababab",
+                        color: '#ababab',
                       }}
                     >
                       {index % 4 === 0 ? (
@@ -132,16 +131,16 @@ const SideBar = () => {
                       ) : index % 4 === 1 ? (
                         <BiSearchAlt />
                       ) : index % 4 === 2 ? (
-                        <BiUserVoice />
+                        <BiPodcast />
                       ) : null}
                     </ListItemIcon>
                     <ListItemText
                       sx={{
-                        color: "#ababab",
-                        textTransform: "capitalize",
+                        color: '#ababab',
+                        textTransform: 'capitalize',
                         [`& span`]: {
                           fontSize: { lg: 16, md: 12 },
-                          fontWeight: "300",
+                          fontWeight: '300',
                         },
                       }}
                       primary={text}
@@ -153,13 +152,13 @@ const SideBar = () => {
             <List
               subheader={
                 <ListSubheader
-                  component="div"
-                  id="nested-list-subheader1"
+                  component='div'
+                  id='nested-list-subheader1'
                   sx={{
-                    background: "transparent",
-                    color: "#F3F3F3",
-                    letterSpacing: "1px",
-                    fontWeight: "400",
+                    background: 'transparent',
+                    color: '#F3F3F3',
+                    letterSpacing: '1px',
+                    fontWeight: '400',
                     fontSize: { lg: 16, md: 12 },
                   }}
                 >
@@ -167,20 +166,18 @@ const SideBar = () => {
                 </ListSubheader>
               }
             >
-              {["Podcasts", "Favourites", "Playlist"].map((text, index) => (
+              {['Favourites', 'Playlist'].map((text, index) => (
                 <ListItem button key={text}>
                   <ListItemIcon
                     sx={{
                       minWidth: 37,
                       fontSize: { lg: 16, md: 12 },
-                      color: "#ababab",
+                      color: '#ababab',
                     }}
                   >
                     {index % 4 === 0 ? (
-                      <BiPodcast />
-                    ) : index % 4 === 1 ? (
                       <BiHeart />
-                    ) : index % 4 === 2 ? (
+                    ) : index % 4 === 1 ? (
                       <BiMusic />
                     ) : null}
                   </ListItemIcon>
@@ -191,13 +188,13 @@ const SideBar = () => {
             <List
               subheader={
                 <ListSubheader
-                  component="div"
-                  id="nested-list-subheader"
+                  component='div'
+                  id='nested-list-subheader'
                   sx={{
-                    background: "transparent",
-                    color: "#F3F3F3",
-                    letterSpacing: "1px",
-                    fontWeight: "400",
+                    background: 'transparent',
+                    color: '#F3F3F3',
+                    letterSpacing: '1px',
+                    fontWeight: '400',
                     fontSize: { lg: 16, md: 12 },
                   }}
                 >
@@ -209,10 +206,10 @@ const SideBar = () => {
                 <ListItem dense button key={text.id}>
                   <ListItemText
                     sx={{
-                      color: "#ababab",
+                      color: '#ababab',
                       [`& span`]: {
                         fontSize: 14,
-                        fontWeight: "700",
+                        fontWeight: '700',
                       },
                     }}
                     primary={text.name}
