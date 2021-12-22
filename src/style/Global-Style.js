@@ -70,6 +70,9 @@ const useStyles = makeStyles((theme) =>
       '.MuiTablePagination-root': {
         marginTop: '-21rem !important',
         color: '#fff !important',
+        [theme.breakpoints.up('md')]: {
+          marginTop: '-64rem !important',
+        },
       },
 
       '.swiper-slide': {

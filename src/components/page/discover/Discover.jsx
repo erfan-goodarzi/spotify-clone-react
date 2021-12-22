@@ -6,7 +6,13 @@ import Typography from '@mui/material/Typography';
 const Discover = () => {
   return (
     <>
-      <CategoryCover />
+      <Box
+        sx={{
+          ml: { lg: 0, md: 13 },
+        }}
+      >
+        <CategoryCover />
+      </Box>
       <Box sx={{ ml: 3 }}>
         <Typography
           sx={{
@@ -15,6 +21,7 @@ const Discover = () => {
             fontSize: '27px',
             color: '#fff',
             fontWeight: ' 700',
+            ml: {lg: 0, md:11}
           }}
         >
           Music for you

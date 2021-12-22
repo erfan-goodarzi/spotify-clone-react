@@ -59,16 +59,20 @@ const Publicplaylist = ({ Albums }) => {
         justifyContent='flex-start'
         alignItems='center'
         spacing={5}
+        sx={{
+          ml: { lg: 0, md: '8rem' },
+          mt: { lg: 0, md: '1rem' },
+        }}
       >
         {topTrack.map((song) => (
           <Box
             key={song.id}
             sx={{
               flexGrow: 1,
-              maxWidth: 350,
+              maxWidth: { lg: 350, md: 154 },
               margin: '2rem 0rem',
               transition: 'all 0.3s ease-in-out',
-              height: 140,
+              height: { lg: 140, md: 203 },
               backgroundColor: '#1b1a20',
               borderRadius: '6px',
               '&:hover': {
@@ -81,7 +85,7 @@ const Publicplaylist = ({ Albums }) => {
           >
             <Grid
               container
-              direction='row'
+              direction={{ lg: 'row', md: 'column' }}
               justifyContent='flex-start'
               alignItems='center'
             >
@@ -99,7 +103,12 @@ const Publicplaylist = ({ Albums }) => {
                 <Box>
                   <AvatarGroup
                     max={4}
-                    sx={{ position: 'relative', left: '-8rem', top: '-2rem' }}
+                    sx={{
+                      position: 'relative',
+                      left: '-8rem',
+                      top: '-2rem',
+                      display: { lg: 'block', md: 'none' },
+                    }}
                   >
                     <Avatar alt='Remy Sharp' src={song.cover} />
                     <Avatar
@@ -124,7 +133,8 @@ const Publicplaylist = ({ Albums }) => {
                       fontSize: 18,
                       fontWeight: '300',
                       color: '#ddd',
-                      margin: '-101px -92px',
+                      margin: { lg: '-101px -92px', md: '-3rem 0' },
+                      textAlign: { lg: 'unset', md: 'center' },
                     }}
                   >
                     {song.name}
