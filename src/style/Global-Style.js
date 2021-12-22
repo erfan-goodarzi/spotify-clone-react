@@ -92,6 +92,17 @@ const useStyles = makeStyles((theme) =>
           transition: 'all 0.3s ease-in-out',
         },
       },
+      '*::-webkit-scrollbar': {
+        width: '7px',
+      },
+      '*::-webkit-scrollbar-track': {
+        '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
+      },
+      '*::-webkit-scrollbar-thumb': {
+        borderRadius: '1px',
+        backgroundColor: 'rgba(0,0,0,.1)',
+        outline: '1px solid slategrey'
+      }
     },
   })
 );
