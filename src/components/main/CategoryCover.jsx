@@ -36,7 +36,7 @@ const CategoryCover = () => {
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {console.log(allCategory)}
         {allCategory.map((item) => (
-          <Grid key={item.id} item xs={3} md={6} sx={{ mb: 3 }}>
+          <Grid key={item.id} item xs={3} md={6} sm={6} sx={{ mb: 3 }}>
             <Typography sx={{ p: '13px 1px', fontSize: 18, color: '#ddd' }}>
               {item.name}
             </Typography>

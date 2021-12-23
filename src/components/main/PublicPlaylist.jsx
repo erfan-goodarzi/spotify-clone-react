@@ -60,8 +60,8 @@ const Publicplaylist = ({ Albums }) => {
         alignItems='center'
         spacing={5}
         sx={{
-          ml: { lg: 0, md: '8rem' },
-          mt: { lg: 0, md: '1rem' },
+          ml: { lg: 0, md: '8rem', sm: '0' },
+          mt: { lg: 0, md: '1rem', sm: '1rem' },
         }}
       >
         {topTrack.map((song) => (
@@ -69,10 +69,10 @@ const Publicplaylist = ({ Albums }) => {
             key={song.id}
             sx={{
               flexGrow: 1,
-              maxWidth: { lg: 350, md: 154 },
+              maxWidth: { lg: 350, md: 154, sm: 154 },
               margin: '2rem 0rem',
               transition: 'all 0.3s ease-in-out',
-              height: { lg: 140, md: 203 },
+              height: { lg: 140, md: 203, sm: 203 },
               backgroundColor: '#1b1a20',
               borderRadius: '6px',
               '&:hover': {
@@ -85,7 +85,7 @@ const Publicplaylist = ({ Albums }) => {
           >
             <Grid
               container
-              direction={{ lg: 'row', md: 'column' }}
+              direction={{ lg: 'row', md: 'column', sm: 'column' }}
               justifyContent='flex-start'
               alignItems='center'
             >
@@ -107,7 +107,7 @@ const Publicplaylist = ({ Albums }) => {
                       position: 'relative',
                       left: '-8rem',
                       top: '-2rem',
-                      display: { lg: 'block', md: 'none' },
+                      display: { lg: 'block', md: 'none', sm: 'none' },
                     }}
                   >
                     <Avatar alt='Remy Sharp' src={song.cover} />
@@ -133,8 +133,12 @@ const Publicplaylist = ({ Albums }) => {
                       fontSize: 18,
                       fontWeight: '300',
                       color: '#ddd',
-                      margin: { lg: '-101px -92px', md: '-3rem 0' },
-                      textAlign: { lg: 'unset', md: 'center' },
+                      margin: {
+                        lg: '-101px -92px',
+                        md: '-3rem 0',
+                        sm: '-3rem 0',
+                      },
+                      textAlign: { lg: 'unset', md: 'center', sm: 'center' },
                     }}
                   >
                     {song.name}

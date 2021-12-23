@@ -4,8 +4,8 @@ const Topbanner = () => {
     <>
       <Box
         sx={{
-          width: { lg: 1123, md: 760 },
-          height: { lg: '40vh', md: '18vh' },
+          width: { lg: 1123, md: 760, sm: 538 },
+          height: { lg: '40vh', md: '18vh', sm: '17vh' },
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           borderRadius: '20px',

@@ -8,12 +8,12 @@ const Discover = () => {
     <>
       <Box
         sx={{
-          ml: { lg: 0, md: 13 },
+          ml: { lg: 0, md: 13, sm: 8 },
         }}
       >
         <CategoryCover />
       </Box>
-      <Box sx={{ ml: 3 }}>
+      <Box sx={{ ml: { md: 3, sm: 6 } }}>
         <Typography
           sx={{
             lineHeight: '1px',
@@ -21,7 +21,7 @@ const Discover = () => {
             fontSize: '27px',
             color: '#fff',
             fontWeight: ' 700',
-            ml: {lg: 0, md:11}
+            ml: { lg: 0, md: 11, sm: 3 },
           }}
         >
           Music for you
