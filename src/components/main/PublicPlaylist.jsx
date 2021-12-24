@@ -107,7 +107,7 @@ const Publicplaylist = ({ Albums }) => {
                       position: 'relative',
                       left: '-8rem',
                       top: '-2rem',
-                      display: { lg: 'block', md: 'none', sm: 'none' },
+                      display: { lg: 'flex', md: 'none', sm: 'none' },
                     }}
                   >
                     <Avatar alt='Remy Sharp' src={song.cover} />
