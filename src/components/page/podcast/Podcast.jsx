@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { BiBroadcast } from 'react-icons/bi';
-import LatsetRelease from '../../main/LatestRelease';
 
 const Podcast = () => {
   return (

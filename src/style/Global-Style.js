@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) =>
       '.MuiTablePagination-root': {
         marginTop: '-21rem !important',
         color: '#fff !important',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('down')]: {
           marginTop: '-64rem !important',
         },
       },

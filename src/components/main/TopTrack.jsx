@@ -4,7 +4,6 @@ import { Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { playSong } from '../../redux/SpotifySlice';
 import Playbutton from '../PlayerButton/PlayButton';
-
 const columns = [
   {
     field: 'cover',
@@ -13,7 +12,7 @@ const columns = [
     sortable: false,
     align: 'center',
     headerAlign: 'center',
-    renderCell: (params) => <img src={params.value} alt="CoverSongs" />,
+    renderCell: (params) => <img src={params.value} alt='CoverSongs' />,
   },
 
   {
@@ -60,46 +59,43 @@ const columns = [
 const Toptrack = ({ Title, Track }) => {
   const dispatch = useDispatch();
   return (
-    <>
-      <Box
+    <Box
+      sx={{
+        width: { lg: '100%', md: '97%', sm: '97%' },
+        mx: 'auto',
+        mt: 6,
+        ml: { lg: 5, md: '104px', sm: '72px' },
+      }}
+    >
+      <Typography
         sx={{
-          width: { lg: '100%', md: '97%', sm: '97%' },
-          mx: 'auto',
-          mt: 6,
-          ml: { lg: 5, md: '104px', sm: '72px' },
+          mb: 3,
+          fontSize: 25,
+          fontWeight: 300,
+          color: '#18d860',
         }}
       >
-        <Typography
-          sx={{
-            mb: 3,
-            fontSize: 25,
-            fontWeight: 300,
-            color: '#18d860',
-          }}
-        >
-          {Title}
-        </Typography>
-        <DataGrid
-          autoHeight
-          onRowClick={(e) => {
-            if (e.row.musicSrc === null) {
-              alert('This song cannot be played');
-            } else {
-              dispatch(playSong(e.row));
-            }
-          }}
-          disableColumnSelector
-          disableSelectionOnClick
-          rows={Track}
-          ColumnUnsortedIcon={false}
-          columns={columns}
-          showColumnRightBorder={false}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          disableColumnMenu
-        />
-      </Box>
-    </>
+        {Title}
+      </Typography>
+      <DataGrid
+        autoHeight
+        onRowClick={(e) => {
+          if (e.row.musicSrc === null) {
+            alert('This song cannot be played');
+          } else {
+            dispatch(playSong(e.row));
+          }
+        }}
+        disableColumnSelector
+        disableSelectionOnClick
+        rows={Track}
+        ColumnUnsortedIcon={false}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        disableColumnMenu
+      />
+    </Box>
   );
 };
 

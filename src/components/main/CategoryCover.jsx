@@ -16,7 +16,6 @@ const CategoryCover = () => {
     spotifyApi.setAccessToken(getTokenFromResponse().access_token);
     // Get all gener
     spotifyApi.getCategories().then((res) => {
-      console.log(res);
       dispatch(showAllCategory(res.categories.items));
     });
   }, []);
@@ -34,7 +33,6 @@ const CategoryCover = () => {
         Browse All
       </Typography>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {console.log(allCategory)}
         {allCategory.map((item) => (
           <Grid key={item.id} item lg={3} xs={8} md={6} sm={6} sx={{ mb: 3 }}>
             <Typography sx={{ p: '13px 1px', fontSize: 18, color: '#ddd' }}>

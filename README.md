@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Demo 
+
+
+
+![myimage-alt-tag](https://i.postimg.cc/X7yNL5SX/Screenshot-2022-01-21-142835.png) 
+![myimage-alt-tag](https://i.postimg.cc/gc7k3D7f/Screenshot-2022-01-21-143050.png)
+
+Online demo: https://frosty-perlman-f7419e.netlify.app/
+
+
 ## Available Scripts
 
 In the project directory, you can run:

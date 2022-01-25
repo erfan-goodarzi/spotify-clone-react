@@ -36,7 +36,6 @@ const SideBar = () => {
     //Get Playlist
     spotifyApi.getUserPlaylists('cdasgbwskid81gi3g3x15z14v').then((res) => {
       dispatch(getUserPlaylist(res.items));
-      console.log(res.items);
     });
   }, [dispatch]);
 
