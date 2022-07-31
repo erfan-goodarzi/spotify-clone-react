@@ -1,6 +1,6 @@
 export const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const CLIENT_ID = "8fd5520eb42045058d625433f33d4221";
-const REDIRECT_UIL = "http://localhost:3000/profile";
+const REDIRECT_UIL = "frosty-perlman-f7419e.netlify.app/profile";
 
 const scopes = [
   "streaming",
